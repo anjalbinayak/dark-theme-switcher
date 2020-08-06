@@ -47,14 +47,14 @@
 
         _themeSwitcher.createMoon = (div) =>
         {
-            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','assets/svgs/moon.svg');
+            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg');
             div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
 
 
         }
 
         _themeSwitcher.createSun = (div) => {
-            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','assets/svgs/sun.svg');
+            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg');
             div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
 
         }
@@ -73,7 +73,7 @@
         
 
             _themeSwitcher.setTheme(LIGHT_THEME);     
-            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','assets/svgs/moon.svg');
+            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg');
         }
 
         _themeSwitcher.activateDarkTheme = () => {
@@ -85,7 +85,7 @@
             });
 
             _themeSwitcher.setTheme(DARK_THEME);
-            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','assets/svgs/sun.svg');
+            _themeSwitcher.TOGGLER_IMAGE.setAttribute('src','https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg');
         }
 
         _themeSwitcher.toggleTheme = () => {
