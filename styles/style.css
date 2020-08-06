@@ -1,6 +1,7 @@
 .bin-image-toggler{
     height:30px;
     width:30px;
+    cursor:default;
 }
 
 html {
@@ -17,11 +18,12 @@ html {
 }
 
 #bin-theme-toggler{
-    position:fixed;
-    right:80px;
-    bottom:50px;
+    position:absolute;
+    top:10;
+    right:20;
     background: #8f8d9e;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.4);
+    cursor:move;
+    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.4); */
 }
