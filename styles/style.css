@@ -1,0 +1,27 @@
+.bin-image-toggler{
+    height:30px;
+    width:30px;
+}
+
+html {
+    transition: 100ms;
+}
+
+.bin-dark-theme{
+    filter: invert(1) hue-rotate(180deg);
+}
+
+
+.bin-dark-theme-image{
+    filter: invert(1) hue-rotate(180deg);
+}
+
+#bin-theme-toggler{
+    position:fixed;
+    right:80px;
+    bottom:50px;
+    background: #8f8d9e;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.4);
+}
