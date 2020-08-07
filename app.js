@@ -2,7 +2,7 @@
   const ThemeSwitcher = (
     options = {
       id: "bin-theme-toggler",
-      class: "bin_theme_toggler",
+      class: "bin_theme_toggler"
     }
   ) => {
     let _themeSwitcher = {
@@ -12,13 +12,14 @@
     const DARK_THEME = "BIN_DARK_THEME";
     const LIGHT_THEME = "BIN_LIGHT_THEME";
 
-    _themeSwitcher.Init = (initOptions = {}) => {
+    _themeSwitcher.Init = (initOptions = {glow:false}) => {
       _themeSwitcher.TOGGLER_IMAGE = document.createElement("img");
       _themeSwitcher.TOGGLER_IMAGE.classList.add("bin-image-toggler");
       _themeSwitcher.TOGGLER_IMAGE.addEventListener(
         "click",
         _themeSwitcher.toggleTheme
       );
+      _themeSwitcher.options.glow = initOptions.glow;
 
       _themeSwitcher.createToggler();
       _themeSwitcher.applyTheme();
@@ -79,8 +80,10 @@
 
     _themeSwitcher.createToggler = () => {
       let div = document.createElement("div");
-      div.setAttribute("class", _themeSwitcher.options.class);
+      div.classList.add(_themeSwitcher.options.class);
       div.setAttribute("id", _themeSwitcher.options.id);
+      if(_themeSwitcher.options.glow)
+        div.classList.add('glow');
       div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
       div.style.left = localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
       div.style.zIndex = "5050";
