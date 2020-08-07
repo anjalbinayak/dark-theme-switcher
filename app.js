@@ -81,8 +81,9 @@
       let div = document.createElement("div");
       div.setAttribute("class", _themeSwitcher.options.class);
       div.setAttribute("id", _themeSwitcher.options.id);
-      div.style.top = localStorage.getItem("bin-theme-toggler-top") || 0;
-      div.style.left = localStorage.getItem("bin-theme-toggler-left") || 0;
+      div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
+      div.style.left = localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
+      div.style.zIndex = "5050";
 
       if (_themeSwitcher.getCurrentDisplayMode() === DARK_THEME) {
         _themeSwitcher.createSun(div);
