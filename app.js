@@ -36,8 +36,7 @@
           pos3 = 0,
           pos4 = 0;
 
-          elmnt.onmousedown = dragMouseDown;
-        
+        elmnt.onmousedown = dragMouseDown;
 
         function dragMouseDown(e) {
           e = e || window.event;
@@ -62,8 +61,8 @@
           elmnt.style.top = elmnt.offsetTop - pos2 + "px";
           elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
 
-          localStorage.setItem('bin-theme-toggler-top', elmnt.style.top);
-          localStorage.setItem('bin-theme-toggler-left', elmnt.style.left);
+          localStorage.setItem("bin-theme-toggler-top", elmnt.style.top);
+          localStorage.setItem("bin-theme-toggler-left", elmnt.style.left);
         }
 
         function closeDragElement() {
@@ -82,8 +81,8 @@
       let div = document.createElement("div");
       div.setAttribute("class", _themeSwitcher.options.class);
       div.setAttribute("id", _themeSwitcher.options.id);
-      div.style.top = localStorage.getItem('bin-theme-toggler-top') || 0;
-      div.style.left = localStorage.getItem('bin-theme-toggler-left') || 0;
+      div.style.top = localStorage.getItem("bin-theme-toggler-top") || 0;
+      div.style.left = localStorage.getItem("bin-theme-toggler-left") || 0;
 
       if (_themeSwitcher.getCurrentDisplayMode() === DARK_THEME) {
         _themeSwitcher.createSun(div);
@@ -133,7 +132,9 @@
       root.classList.add("bin-dark-theme");
       let images = document.querySelectorAll("img");
       images.forEach(function (img) {
-        img.classList.add("bin-dark-theme-image");
+        if (!img.classList.contains("bin-image-toggler")) {
+          img.classList.add("bin-dark-theme-image");
+        }
       });
 
       _themeSwitcher.setTheme(DARK_THEME);
