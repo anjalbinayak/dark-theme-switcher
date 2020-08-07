@@ -1,29 +1,31 @@
-.bin-image-toggler{
-    height:30px;
-    width:30px;
-    cursor:default;
+.bin-image-toggler {
+  height: 30px;
+  width: 30px;
+  cursor: default;
 }
 
 html {
-    transition: 100ms;
+  transition: 100ms;
 }
 
-.bin-dark-theme{
-    filter: invert(1) hue-rotate(180deg);
+.bin-dark-theme {
+  filter: invert(1) hue-rotate(180deg);
 }
 
-
-.bin-dark-theme-image{
-    filter: invert(1) hue-rotate(180deg);
+.bin-dark-theme-image {
+  filter: invert(1) hue-rotate(180deg);
 }
 
-#bin-theme-toggler{
-    position:absolute;
-    top:10;
-    right:20;
-    background: #8f8d9e;
-    padding: 5px;
-    border-radius: 5px;
-    cursor:move;
-    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.4); 
+#bin-theme-toggler {
+  position: absolute;
+  top: 10;
+  right: 20;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: move;
+  background-color: #0c9;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
 }
