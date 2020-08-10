@@ -95,9 +95,40 @@
       }
     };
 
+    _themeSwitcher.getContextMenu = () => {
+      return document.querySelector("#bin-theme-context-menu");
+    }
+
     _themeSwitcher.getCurrentDisplayMode = () => {
       return localStorage.getItem("bin-theme-toggler-mode");
     };
+
+    _themeSwitcher.getTogglerPosition = () => {
+      return localStorage.getItem('bin-theme-toggler-position');
+    }
+
+    _themeSwitcher.setTogglerPosition = (position) => {
+      position  = position == 'fixed'? 'fixed' : 'absolute';
+      localStorage.setItem('bin-theme-toggler-position',position);
+    }
+
+    _themeSwitcher.getTopPositionOfToggler = () =>{
+       return localStorage.getItem('bin-theme-toggler-top');
+    }
+
+    _themeSwitcher.setTopPositionOfToggler = (topPosition) => {
+      localStorage.setItem('bin-theme-toggler-top', `${topPosition}px`);
+    }
+
+    _themeSwitcher.getLeftPositionOfToggler = () =>{
+      return localStorage.getItem('bin-theme-toggler-left');
+   }
+
+   _themeSwitcher.setLeftPositionOfToggler = (leftPosition) => {
+    localStorage.setItem('bin-theme-toggler-left', `${leftPosition}px`);
+  }
+
+
 
     _themeSwitcher.createContextMenu = () => {
       let div = document.createElement("div");
@@ -131,7 +162,7 @@
         contextMenu.style.display = "block";
         contextMenu.style.top = localStorage.getItem("bin-theme-toggler-top") || `${20}%`;
         contextMenu.style.left = localStorage.getItem("bin-theme-toggler-left") || `${90}%`;
-        contextMenu.style.position =  localStorage.getItem("bin-theme-toggler-position") || 'absolute';
+        contextMenu.style.position =  _themeSwitcher.getTogglerPosition();
       }
     };
 
