@@ -12,6 +12,10 @@
     const DARK_THEME = "BIN_DARK_THEME";
     const LIGHT_THEME = "BIN_LIGHT_THEME";
 
+
+    const MOON_SVG = "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg";
+    const SUN_SVG = "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg";
+
     _themeSwitcher.Init = (initOptions = { glow: false }) => {
       _themeSwitcher.TOGGLER_IMAGE = document.createElement("img");
       _themeSwitcher.TOGGLER_IMAGE.classList.add("bin-image-toggler");
@@ -197,7 +201,7 @@
     _themeSwitcher.createMoon = (div) => {
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg"
+        MOON_SVG
       );
       div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
     };
@@ -205,8 +209,8 @@
     _themeSwitcher.createSun = (div) => {
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg"
-      );
+        SUN_SVG
+        );
       div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
     };
 
@@ -223,7 +227,7 @@
       _themeSwitcher.setTheme(LIGHT_THEME);
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg"
+        MOON_SVG
       );
     };
 
@@ -240,7 +244,7 @@
       _themeSwitcher.setTheme(DARK_THEME);
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg"
+        SUN_SVG
       );
     };
 
