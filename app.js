@@ -27,11 +27,7 @@
       _themeSwitcher.draggable();
 
       window.addEventListener("click", function (e) {
-        if (
-          !document.getElementById("bin-theme-context-menu").contains(e.target)
-        ) {
-          _themeSwitcher.hideContextMenu();
-        }
+        if (!_themeSwitcher.getContextMenu().contains(e.target)) _themeSwitcher.hideContextMenu();
       });
 
       window.addEventListener("contextmenu", function (e) {
@@ -40,10 +36,8 @@
           e.preventDefault();
         }
 
-        if(_themeSwitcher.isContextMenuVisible())
-        {
-          e.preventDefault();
-        }
+        if(_themeSwitcher.isContextMenuVisible())  e.preventDefault();
+
       });
 
       return initOptions;
