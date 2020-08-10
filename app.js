@@ -128,6 +128,10 @@
     localStorage.setItem('bin-theme-toggler-left', `${leftPosition}px`);
   }
 
+  _themeSwitcher.setTheme = (KEY) => {
+    localStorage.setItem("bin-theme-toggler-mode", KEY);
+  };
+
 
 
     _themeSwitcher.createContextMenu = () => {
@@ -141,11 +145,10 @@
         let isChecked = input.checked;
         if (isChecked) {
           document.getElementById(options.id).style.position = "fixed";
-          localStorage.setItem('bin-theme-toggler-position','fixed');
+          _themeSwitcher.setTogglerPosition('fixed');
         } else {
           document.getElementById(options.id).style.position = "absolute";
-          localStorage.setItem('bin-theme-toggler-position','absolute');
-
+          _themeSwitcher.setTogglerPosition('absolute');
         }
 
        
@@ -157,7 +160,7 @@
     };
 
     _themeSwitcher.showContextMenu = () => {
-      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      let contextMenu =  _themeSwitcher.getContextMenu();
       if (contextMenu) {
         contextMenu.style.display = "block";
         contextMenu.style.top = localStorage.getItem("bin-theme-toggler-top") || `${20}%`;
@@ -167,13 +170,13 @@
     };
 
     _themeSwitcher.isContextMenuVisible = () => {
-       let contextMenu = document.querySelector("#bin-theme-context-menu");
+       let contextMenu = _themeSwitcher.getContextMenu();
        if(contextMenu) return contextMenu.style.display == "block";
        return false;
     }
 
     _themeSwitcher.hideContextMenu = () => {
-      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      let contextMenu = _themeSwitcher.getContextMenu();
       if (contextMenu) contextMenu.style.display = "none";
     };
 
@@ -186,8 +189,7 @@
       div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
       div.style.left =
         localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
-      div.style.position =
-        localStorage.getItem("bin-theme-toggler-position") || "absolute";
+      div.style.position = _themeSwitcher.getTogglerPosition() || "absolute";
       div.style.zIndex = "5050";
 
       if (_themeSwitcher.getCurrentDisplayMode() === DARK_THEME) {
@@ -214,9 +216,7 @@
       div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
     };
 
-    _themeSwitcher.setTheme = (KEY) => {
-      localStorage.setItem("bin-theme-toggler-mode", KEY);
-    };
+
 
     _themeSwitcher.activateLightTheme = () => {
       let root = document.getElementsByTagName("html")[0];
