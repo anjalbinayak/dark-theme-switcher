@@ -1,1 +1,3 @@
-# dark-theme-switcher
+# Dark Theme Switcher
+
+[Demo](https://binayak.codes/dark-theme-switcher/)
