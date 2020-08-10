@@ -2,7 +2,7 @@
   const ThemeSwitcher = (
     options = {
       id: "bin-theme-toggler",
-      class: "bin_theme_toggler"
+      class: "bin_theme_toggler",
     }
   ) => {
     let _themeSwitcher = {
@@ -12,7 +12,7 @@
     const DARK_THEME = "BIN_DARK_THEME";
     const LIGHT_THEME = "BIN_LIGHT_THEME";
 
-    _themeSwitcher.Init = (initOptions = {glow:false}) => {
+    _themeSwitcher.Init = (initOptions = { glow: false }) => {
       _themeSwitcher.TOGGLER_IMAGE = document.createElement("img");
       _themeSwitcher.TOGGLER_IMAGE.classList.add("bin-image-toggler");
       _themeSwitcher.TOGGLER_IMAGE.addEventListener(
@@ -21,9 +21,30 @@
       );
       _themeSwitcher.options.glow = initOptions.glow;
 
+      _themeSwitcher.createContextMenu();
       _themeSwitcher.createToggler();
       _themeSwitcher.applyTheme();
       _themeSwitcher.draggable();
+
+      window.addEventListener("click", function (e) {
+        if (
+          !document.getElementById("bin-theme-context-menu").contains(e.target)
+        ) {
+          _themeSwitcher.hideContextMenu();
+        }
+      });
+
+      window.addEventListener("contextmenu", function (e) {
+        if (document.getElementById(options.id).contains(e.target)) {
+          _themeSwitcher.showContextMenu();
+          e.preventDefault();
+        }
+
+        if(_themeSwitcher.isContextMenuVisible())
+        {
+          e.preventDefault();
+        }
+      });
 
       return initOptions;
     };
@@ -78,14 +99,64 @@
       return localStorage.getItem("bin-theme-toggler-mode");
     };
 
+    _themeSwitcher.createContextMenu = () => {
+      let div = document.createElement("div");
+      div.setAttribute("id", "bin-theme-context-menu");
+      let input = document.createElement("input");
+      input.type = "checkbox";
+      if(localStorage.getItem('bin-theme-toggler-position') == 'fixed') input.checked = true;
+      input.addEventListener("change", function () {
+        _themeSwitcher.hideContextMenu();
+        let isChecked = input.checked;
+        if (isChecked) {
+          document.getElementById(options.id).style.position = "fixed";
+          localStorage.setItem('bin-theme-toggler-position','fixed');
+        } else {
+          document.getElementById(options.id).style.position = "absolute";
+          localStorage.setItem('bin-theme-toggler-position','absolute');
+
+        }
+
+       
+      });
+      div.innerHTML +=" <small> Fixed Position </small>";
+      div.appendChild(input);
+     
+      document.body.appendChild(div);
+    };
+
+    _themeSwitcher.showContextMenu = () => {
+      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      if (contextMenu) {
+        contextMenu.style.display = "block";
+        contextMenu.style.top = localStorage.getItem("bin-theme-toggler-top") || `${20}%`;
+        contextMenu.style.left = localStorage.getItem("bin-theme-toggler-left") || `${90}%`;
+        contextMenu.style.position =  localStorage.getItem("bin-theme-toggler-position") || 'absolute';
+      }
+    };
+
+    _themeSwitcher.isContextMenuVisible = () => {
+       let contextMenu = document.querySelector("#bin-theme-context-menu");
+       if(contextMenu) return contextMenu.style.display == "block";
+       return false;
+    }
+
+    _themeSwitcher.hideContextMenu = () => {
+      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      if (contextMenu) contextMenu.style.display = "none";
+    };
+
     _themeSwitcher.createToggler = () => {
       let div = document.createElement("div");
       div.classList.add(_themeSwitcher.options.class);
       div.setAttribute("id", _themeSwitcher.options.id);
-      if(_themeSwitcher.options.glow)
-        div.classList.add('glow');
+      if (_themeSwitcher.options.glow) div.classList.add("glow");
+
       div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
-      div.style.left = localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
+      div.style.left =
+        localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
+      div.style.position =
+        localStorage.getItem("bin-theme-toggler-position") || "absolute";
       div.style.zIndex = "5050";
 
       if (_themeSwitcher.getCurrentDisplayMode() === DARK_THEME) {
