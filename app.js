@@ -236,8 +236,8 @@
       root.classList.add("bin-dark-theme");
       let images = document.querySelectorAll("img");
       images.forEach(function (img) {
-        if (!img.classList.contains("bin-image-toggler")) {
-          img.classList.add("bin-dark-theme-image");
+        if (!img.classList.contains(options.class)) {
+          img.classList.add(options.class);
         }
       });
 
