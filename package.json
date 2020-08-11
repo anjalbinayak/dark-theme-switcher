@@ -1,0 +1,28 @@
+{
+  "name": "dark-theme-switcher",
+  "version": "1.0.0",
+  "description": "Package that allows you to easily switch the theme of your application between light and dark themes",
+  "main": "index.js",
+  "scripts": {
+    "ts": "tsc --watch",
+    "browserify": "watchify js/main.js -o js/dark-theme-switcher.js",
+    "build": "concurrently --kill-others \"npm run ts\" \"npm run browserify\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizfilipezs/dark-theme-switcher.git"
+  },
+  "keywords": [
+    "dark-theme",
+    "theme-switch"
+  ],
+  "author": "Luiz Filipe da Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizfilipezs/dark-theme-switcher/issues"
+  },
+  "homepage": "https://github.com/luizfilipezs/dark-theme-switcher#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
