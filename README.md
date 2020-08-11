@@ -14,8 +14,43 @@ Next days, I'll be working here on my free time to change that behavior and anal
 - [x] Initialize npm
 - [x] Start using TypeScript
 - [x] Update code according to ES2020
+- [x] Remove default floating icon
+- [x] Enable any element to be the toggler
+- [x] Handle styles from JavaScript (with options)
 
-## Installation and build
+## Development
 
 1. `npm i`
 2. `npm run build`
+
+## Usage
+
+### Import
+
+```ts
+import { ThemeSwitcher } from './theme-switcher.ts';
+```
+
+### Initialization
+
+Simple:
+
+```ts
+const toggler = document.getElementById('button');
+new ThemeSwitcher(toggler).init();
+```
+
+Advanced:
+
+```ts
+const toggler = document.getElementById('toggler');
+const options = { transition: 200 }
+    
+const themeSwitcher = new ThemeSwitcher(toggler, isDark => {
+  isDark ?
+    toggler.setAttribute('src', '/path/to/sun-icon.png') :
+    toggler.setAttribute('src', '/path/to/moon-icon.png');
+}, options);
+    
+themeSwitcher.init();
+```
