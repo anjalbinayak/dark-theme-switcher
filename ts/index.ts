@@ -1,10 +1,6 @@
 import ThemeSwitcher from './theme.switcher';
+import Sample from './sample';
 
-// Test
-const button = document.querySelector('button');
+Sample();
 
-new ThemeSwitcher(button, isDark => {
-  console.log(isDark ? 'Dark theme' : 'Light theme');
-});
-
-export default ThemeSwitcher;
+export { ThemeSwitcher };
