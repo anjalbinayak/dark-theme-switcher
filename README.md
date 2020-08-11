@@ -36,7 +36,9 @@ import { ThemeSwitcher } from './theme-switcher.ts';
 Simple:
 
 ```ts
+// Target element
 const toggler = document.getElementById('button');
+// Switcher
 new ThemeSwitcher(toggler).init();
 ```
 
@@ -44,7 +46,7 @@ Advanced:
 
 ```ts
 const toggler = document.getElementById('toggler');
-const options = { transition: 200 }
+const options = { transition: 200 } // default is 150
     
 const themeSwitcher = new ThemeSwitcher(toggler, isDark => {
   isDark ?
