@@ -1,2 +1,5 @@
 node_modules/
 js/
+ts/sample.ts
+ts/icon.ts
+index.html
