@@ -22,12 +22,12 @@ Forked from [anjalbinayak/dark-theme-switcher](https://github.com/anjalbinayak/d
 ### Import
 
 ```ts
-import { ThemeSwitcher } from './theme-switcher.ts';
+import { ThemeSwitcher } from 'dark-theme-switcher';
 ```
 
 ### Initialization
 
-Simple:
+**Simple**
 
 ```ts
 // Target element
@@ -36,7 +36,7 @@ const toggler = document.getElementById('button');
 new ThemeSwitcher(toggler).init();
 ```
 
-Advanced:
+**Advanced**
 
 ```ts
 const toggler = document.getElementById('toggler');
