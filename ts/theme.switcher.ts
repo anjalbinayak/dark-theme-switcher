@@ -1,9 +1,11 @@
 import Theme from './theme';
+import Style from './style';
+import SwitcherOptions from './switcher.options';
 
 export default class ThemeSwitcher {
 
-  constructor(public toggler: HTMLElement, public callbackFunction?: (isDark: boolean) => void, autoInit = true) {
-    if (autoInit) this.init();
+  constructor(public toggler: HTMLElement, public callbackFunction?: (isDark: boolean) => void, private options: SwitcherOptions = {}) {
+    this.applyStyle(options);
   }
 
   init(): void {
@@ -11,11 +13,19 @@ export default class ThemeSwitcher {
     this.applyTheme();
   }
 
+  private applyStyle(options: SwitcherOptions): void {
+    const { transition } = options;
+
+    const sheet = document.createElement('style');
+    sheet.innerHTML = Style(transition);
+    document.querySelector('html').appendChild(sheet);
+  }
+
   getCurrentDisplayMode(): string {
     return localStorage.getItem('bin-theme-toggler-mode');
   };
 
-  setTheme(key: string): void {
+  private setTheme(key: string): void {
     localStorage.setItem('bin-theme-toggler-mode', key);
   }
 
@@ -53,7 +63,7 @@ export default class ThemeSwitcher {
       this.activateDarkTheme();
   }
 
-  applyTheme(): void {
+  private applyTheme(): void {
     if (this.getCurrentDisplayMode() === Theme.Dark)
       this.activateDarkTheme();
     else
