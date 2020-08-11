@@ -1,19 +1,9 @@
-interface InitSettings {
-  glow: boolean;
-}
+import InitSettings from './init.settings';
+import SwitcherOptions from './switcher.options';
+import Theme from './theme';
 
-interface SwitcherOptions {
-  id: string;
-  class: string;
-  glow?: boolean;
-}
-
-class ThemeSwitcher {
-
+export default class ThemeSwitcher {
   private options: SwitcherOptions;
-
-  readonly DARK_THEME = 'BIN_DARK_THEME';
-  readonly LIGHT_THEME = 'BIN_LIGHT_THEME';
 
   readonly MOON_SVG = 'https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg';
   readonly SUN_SVG = 'https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg';
@@ -49,8 +39,7 @@ class ThemeSwitcher {
         e.preventDefault();
       }
 
-      if(this.isContextMenuVisible())  e.preventDefault();
-
+      if (this.isContextMenuVisible()) e.preventDefault();
     });
 
     return initOptions;
@@ -202,7 +191,7 @@ class ThemeSwitcher {
     div.style.position = this.getTogglerPosition() || 'absolute';
     div.style.zIndex = '5050';
 
-    if (this.getCurrentDisplayMode() === this.DARK_THEME)
+    if (this.getCurrentDisplayMode() === Theme.Dark)
       this.createSun(div);
     else
       this.createMoon(div);
@@ -233,7 +222,7 @@ class ThemeSwitcher {
     let images = document.querySelectorAll('img');
     images.forEach(img => img.classList.remove('bin-dark-theme-image'));
 
-    this.setTheme(this.LIGHT_THEME);
+    this.setTheme(Theme.Light);
     this.TOGGLER_IMAGE.setAttribute(
       'src',
       this.MOON_SVG
@@ -251,7 +240,7 @@ class ThemeSwitcher {
         img.classList.add('bin-dark-theme-image');
     });
 
-    this.setTheme(this.DARK_THEME);
+    this.setTheme(Theme.Dark);
     this.TOGGLER_IMAGE.setAttribute(
       'src',
       this.SUN_SVG
@@ -259,14 +248,14 @@ class ThemeSwitcher {
   }
 
   toggleTheme(): void {
-    if (this.getCurrentDisplayMode() === this.DARK_THEME)
+    if (this.getCurrentDisplayMode() === Theme.Dark)
       this.activateLightTheme();
     else
       this.activateDarkTheme();
   }
 
   applyTheme(): void {
-    if (this.getCurrentDisplayMode() === this.DARK_THEME)
+    if (this.getCurrentDisplayMode() === Theme.Dark)
       this.activateDarkTheme();
     else
       this.activateLightTheme();

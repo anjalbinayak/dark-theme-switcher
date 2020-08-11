@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ts": "tsc --watch",
-    "browserify": "watchify js/main.js -o js/dark-theme-switcher.js",
+    "browserify": "watchify js/index.js -o js/dark-theme-switcher.js",
     "build": "concurrently --kill-others \"npm run ts\" \"npm run browserify\""
   },
   "repository": {
