@@ -2,7 +2,7 @@
 
 Forked from [anjalbinayak/dark-theme-switcher](https://github.com/anjalbinayak/dark-theme-switcher)
 
-## Why did I forked it?
+## Why did I fork it?
 
 I really like the idea behind this project, but that button floating at the screen looks boring to me.
 
