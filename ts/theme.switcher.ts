@@ -3,6 +3,15 @@ import Style from './style';
 import SwitcherOptions from './switcher.options';
 
 export default class ThemeSwitcher {
+  /**
+   * 
+   * @param toggler {HTMLElement} Element that enables the user to
+   * change the current theme by clicking on it
+   * @param [callbackFunction] {(isDark: boolean) => void} Optional callback
+   * function for every time the theme changes
+   * @param [options] {SwitcherOptions} Object with configurations for the
+   * switcher, such as the transition time
+   */
   constructor(
     public toggler: HTMLElement,
     public callbackFunction?: (isDark: boolean) => void,
@@ -11,11 +20,19 @@ export default class ThemeSwitcher {
     this.applyStyle(options);
   }
 
+  /**
+   * Apply the proper theme and enable the toggler to toggle the theme
+   * by clicking on it
+   */
   init(): void {
     this.toggler.addEventListener('click', () => this.toggleTheme());
     this.applyTheme();
   }
 
+  /**
+   * Append the necessary styles to the DOM
+   * @param options {SwitcherOptions} Style options
+   */
   private applyStyle(options: SwitcherOptions): void {
     const { transition } = options;
 
@@ -24,10 +41,17 @@ export default class ThemeSwitcher {
     document.querySelector('html').appendChild(sheet);
   }
 
+  /**
+   * Return the current theme
+   */
   getCurrentDisplayMode(): string {
     return localStorage.getItem('bin-theme-toggler-mode');
   };
 
+  /**
+   * Set a theme at the local storage
+   * @param key {string} Theme key
+   */
   private setTheme(key: string): void {
     localStorage.setItem('bin-theme-toggler-mode', key);
   }

@@ -1,3 +1,8 @@
+/**
+ * Return the proper styles for enabling dark theme
+ * @param transition {number} Transition time (in milliseconds) for every time
+ * the current theme changes. Default is `150`
+ */
 const Style = (transition: number = 150) => {
   return `
     html {
