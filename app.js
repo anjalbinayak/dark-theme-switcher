@@ -137,7 +137,7 @@
       div.setAttribute("id", "bin-theme-context-menu");
       let input = document.createElement("input");
       input.type = "checkbox";
-      if(localStorage.getItem('bin-theme-toggler-position') == 'fixed') input.checked = true;
+      if(_themeSwitcher.getTogglerPosition() == 'fixed') input.checked = true;
       input.addEventListener("change", function () {
         _themeSwitcher.hideContextMenu();
         let isChecked = input.checked;
