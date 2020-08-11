@@ -28,7 +28,7 @@ class ThemeSwitcher {
     this.init(initOptions);
   }
 
-  init(initOptions: InitSettings) {
+  init(initOptions: InitSettings): InitSettings {
     this.TOGGLER_IMAGE = document.createElement('img');
     this.TOGGLER_IMAGE.classList.add('bin-image-toggler');
     this.TOGGLER_IMAGE.addEventListener('click', () => this.toggleTheme());
@@ -56,7 +56,7 @@ class ThemeSwitcher {
     return initOptions;
   }
 
-  draggable() {
+  draggable(): void {
     dragElement(document.getElementById(this.options.id));
 
     function dragElement(elmnt: HTMLElement) {
@@ -102,43 +102,43 @@ class ThemeSwitcher {
     }
   }
 
-  getContextMenu() {
-    return document.querySelector('#bin-theme-context-menu') as HTMLElement;
+  getContextMenu(): HTMLElement {
+    return document.querySelector('#bin-theme-context-menu');
   }
 
-  getCurrentDisplayMode() {
+  getCurrentDisplayMode(): string {
     return localStorage.getItem('bin-theme-toggler-mode');
   };
 
-  getTogglerPosition() {
+  getTogglerPosition(): string {
     return localStorage.getItem('bin-theme-toggler-position');
   }
 
-  setTogglerPosition(position: 'fixed' | 'absolute') {
+  setTogglerPosition(position: 'fixed' | 'absolute'): void {
     localStorage.setItem('bin-theme-toggler-position', position);
   }
 
-  getTopPositionOfToggler() {
+  getTopPositionOfToggler(): string {
     return localStorage.getItem('bin-theme-toggler-top');
   }
 
-  setTopPositionOfToggler(topPosition: number) {
+  setTopPositionOfToggler(topPosition: number): void {
     localStorage.setItem('bin-theme-toggler-top', `${topPosition}px`);
   }
 
-  getLeftPositionOfToggler() {
+  getLeftPositionOfToggler(): string {
     return localStorage.getItem('bin-theme-toggler-left');
   }
 
-  setLeftPositionOfToggler(leftPosition: number) {
+  setLeftPositionOfToggler(leftPosition: number): void {
     localStorage.setItem('bin-theme-toggler-left', `${leftPosition}px`);
   }
 
-  setTheme = (KEY: string) => {
-    localStorage.setItem('bin-theme-toggler-mode', KEY);
+  setTheme(key: string): void {
+    localStorage.setItem('bin-theme-toggler-mode', key);
   }
 
-  createContextMenu() {
+  createContextMenu(): void {
     const div = document.createElement('div');
     div.setAttribute('id', 'bin-theme-context-menu');
 
@@ -166,7 +166,7 @@ class ThemeSwitcher {
     document.body.appendChild(div);
   }
 
-  showContextMenu() {
+  showContextMenu(): void {
     const contextMenu = this.getContextMenu();
 
     if (contextMenu) {
@@ -177,22 +177,24 @@ class ThemeSwitcher {
     }
   }
 
-  isContextMenuVisible() {
+  isContextMenuVisible(): string | boolean {
     const contextMenu = this.getContextMenu();
 
     return contextMenu ?
       contextMenu.style.display == 'block' : false;
   }
 
-  hideContextMenu() {
+  hideContextMenu(): void {
     let contextMenu = this.getContextMenu();
     if (contextMenu) contextMenu.style.display = 'none';
   }
 
-  createToggler() {
-    let div = document.createElement('div');
+  createToggler(): void {
+    const div = document.createElement('div');
+
     div.classList.add(this.options.class);
     div.setAttribute('id', this.options.id);
+
     if (this.options.glow) div.classList.add('glow');
 
     div.style.top =  this.getTopPositionOfToggler() || 20 + '%';
@@ -200,15 +202,15 @@ class ThemeSwitcher {
     div.style.position = this.getTogglerPosition() || 'absolute';
     div.style.zIndex = '5050';
 
-    if (this.getCurrentDisplayMode() === this.DARK_THEME) {
+    if (this.getCurrentDisplayMode() === this.DARK_THEME)
       this.createSun(div);
-    } else {
+    else
       this.createMoon(div);
-    }
+
     document.body.appendChild(div);
   }
 
-  createMoon(div: Element) {
+  createMoon(div: Element): void {
     this.TOGGLER_IMAGE.setAttribute(
       'src',
       this.MOON_SVG
@@ -216,7 +218,7 @@ class ThemeSwitcher {
     div.appendChild(this.TOGGLER_IMAGE);
   }
 
-  createSun(div: Element) {
+  createSun(div: Element): void {
     this.TOGGLER_IMAGE.setAttribute(
       'src',
       this.SUN_SVG
@@ -224,7 +226,7 @@ class ThemeSwitcher {
     div.appendChild(this.TOGGLER_IMAGE);
   }
 
-  activateLightTheme() {
+  activateLightTheme(): void {
     let root = document.getElementsByTagName('html')[0];
     root.classList.remove('bin-dark-theme');
     
@@ -238,14 +240,15 @@ class ThemeSwitcher {
     );
   }
 
-  activateDarkTheme() {
+  activateDarkTheme(): void {
     let root = document.getElementsByTagName('html')[0];
     root.classList.add('bin-dark-theme');
+
     let images = document.querySelectorAll('img');
-    images.forEach(function (img) {
-      if (!img.classList.contains('bin-image-toggler')) {
+
+    images.forEach(img => {
+      if (!img.classList.contains('bin-image-toggler'))
         img.classList.add('bin-dark-theme-image');
-      }
     });
 
     this.setTheme(this.DARK_THEME);
@@ -255,20 +258,18 @@ class ThemeSwitcher {
     );
   }
 
-  toggleTheme() {
-    if (this.getCurrentDisplayMode() === this.DARK_THEME) {
+  toggleTheme(): void {
+    if (this.getCurrentDisplayMode() === this.DARK_THEME)
       this.activateLightTheme();
-    } else {
+    else
       this.activateDarkTheme();
-    }
   }
 
-  applyTheme() {
-    if (this.getCurrentDisplayMode() === this.DARK_THEME) {
+  applyTheme(): void {
+    if (this.getCurrentDisplayMode() === this.DARK_THEME)
       this.activateDarkTheme();
-    } else {
+    else
       this.activateLightTheme();
-    }
   }
 }
 
