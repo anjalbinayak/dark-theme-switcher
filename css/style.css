@@ -5,7 +5,7 @@
 }
 
 html {
-  transition: 100ms;
+  transition: 150ms;
 }
 
 .bin-dark-theme {
@@ -44,12 +44,6 @@ html {
   padding:5px;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
   display: none;
-}
-
-
-.glow {
-  background-color: #ccc;
-  animation: glow 1s infinite alternate;
 }
 
 @keyframes glow {

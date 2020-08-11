@@ -1,28 +1,28 @@
-import InitSettings from './init.settings';
 import SwitcherOptions from './switcher.options';
 import Theme from './theme';
 
 export default class ThemeSwitcher {
-  private options: SwitcherOptions;
+
+  private options: SwitcherOptions = {
+    id: 'bin-theme-toggler',
+    class: 'bin_theme_toggler'
+  };
 
   readonly MOON_SVG = 'https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg';
   readonly SUN_SVG = 'https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg';
 
   TOGGLER_IMAGE: HTMLImageElement;
 
-  constructor(initOptions: InitSettings = { glow: false }) {
-    this.options = {
-      id: 'bin-theme-toggler',
-      class: 'bin_theme_toggler'
-    };
-    this.init(initOptions);
+  constructor(public toggler: HTMLElement, public callbackFunction?: (isDark: boolean) => void) {
+    this.init();
   }
 
-  init(initOptions: InitSettings): InitSettings {
+  init(): void {
     this.TOGGLER_IMAGE = document.createElement('img');
     this.TOGGLER_IMAGE.classList.add('bin-image-toggler');
     this.TOGGLER_IMAGE.addEventListener('click', () => this.toggleTheme());
-    this.options.glow = initOptions.glow;
+
+    this.toggler.addEventListener('click', () => this.toggleTheme());
 
     this.createContextMenu();
     this.createToggler();
@@ -41,8 +41,6 @@ export default class ThemeSwitcher {
 
       if (this.isContextMenuVisible()) e.preventDefault();
     });
-
-    return initOptions;
   }
 
   draggable(): void {
@@ -184,8 +182,6 @@ export default class ThemeSwitcher {
     div.classList.add(this.options.class);
     div.setAttribute('id', this.options.id);
 
-    if (this.options.glow) div.classList.add('glow');
-
     div.style.top =  this.getTopPositionOfToggler() || 20 + '%';
     div.style.left = this.getLeftPositionOfToggler() || 90 + '%';
     div.style.position = this.getTogglerPosition() || 'absolute';
@@ -216,7 +212,7 @@ export default class ThemeSwitcher {
   }
 
   activateLightTheme(): void {
-    let root = document.getElementsByTagName('html')[0];
+    let root = document.querySelector('html');
     root.classList.remove('bin-dark-theme');
     
     let images = document.querySelectorAll('img');
@@ -227,10 +223,12 @@ export default class ThemeSwitcher {
       'src',
       this.MOON_SVG
     );
+
+    if (this.callbackFunction) this.callbackFunction(false);
   }
 
   activateDarkTheme(): void {
-    let root = document.getElementsByTagName('html')[0];
+    let root = document.querySelector('html');
     root.classList.add('bin-dark-theme');
 
     let images = document.querySelectorAll('img');
@@ -245,6 +243,8 @@ export default class ThemeSwitcher {
       'src',
       this.SUN_SVG
     );
+
+    if (this.callbackFunction) this.callbackFunction(true);
   }
 
   toggleTheme(): void {
@@ -261,5 +261,3 @@ export default class ThemeSwitcher {
       this.activateLightTheme();
   }
 }
-
-new ThemeSwitcher();
