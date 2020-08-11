@@ -161,8 +161,8 @@
       let contextMenu =  _themeSwitcher.getContextMenu();
       if (contextMenu) {
         contextMenu.style.display = "block";
-        contextMenu.style.top = localStorage.getItem("bin-theme-toggler-top") || `${20}%`;
-        contextMenu.style.left = localStorage.getItem("bin-theme-toggler-left") || `${90}%`;
+        contextMenu.style.top = _themeSwitcher.getTopPositionOfToggler() || `${20}%`;
+        contextMenu.style.left = _themeSwitcher.getLeftPositionOfToggler() || `${90}%`;
         contextMenu.style.position =  _themeSwitcher.getTogglerPosition();
       }
     };
@@ -184,9 +184,8 @@
       div.setAttribute("id", _themeSwitcher.options.id);
       if (_themeSwitcher.options.glow) div.classList.add("glow");
 
-      div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
-      div.style.left =
-        localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
+      div.style.top =  _themeSwitcher.getTopPositionOfToggler() || 20 + "%";
+      div.style.left = _themeSwitcher.getLeftPositionOfToggler() || 90 + "%";
       div.style.position = _themeSwitcher.getTogglerPosition() || "absolute";
       div.style.zIndex = "5050";
 
