@@ -12,6 +12,10 @@
     const DARK_THEME = "BIN_DARK_THEME";
     const LIGHT_THEME = "BIN_LIGHT_THEME";
 
+
+    const MOON_SVG = "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg";
+    const SUN_SVG = "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg";
+
     _themeSwitcher.Init = (initOptions = { glow: false }) => {
       _themeSwitcher.TOGGLER_IMAGE = document.createElement("img");
       _themeSwitcher.TOGGLER_IMAGE.classList.add("bin-image-toggler");
@@ -27,11 +31,7 @@
       _themeSwitcher.draggable();
 
       window.addEventListener("click", function (e) {
-        if (
-          !document.getElementById("bin-theme-context-menu").contains(e.target)
-        ) {
-          _themeSwitcher.hideContextMenu();
-        }
+        if (!_themeSwitcher.getContextMenu().contains(e.target)) _themeSwitcher.hideContextMenu();
       });
 
       window.addEventListener("contextmenu", function (e) {
@@ -40,10 +40,8 @@
           e.preventDefault();
         }
 
-        if(_themeSwitcher.isContextMenuVisible())
-        {
-          e.preventDefault();
-        }
+        if(_themeSwitcher.isContextMenuVisible())  e.preventDefault();
+
       });
 
       return initOptions;
@@ -95,26 +93,60 @@
       }
     };
 
+    _themeSwitcher.getContextMenu = () => {
+      return document.querySelector("#bin-theme-context-menu");
+    }
+
     _themeSwitcher.getCurrentDisplayMode = () => {
       return localStorage.getItem("bin-theme-toggler-mode");
     };
+
+    _themeSwitcher.getTogglerPosition = () => {
+      return localStorage.getItem('bin-theme-toggler-position');
+    }
+
+    _themeSwitcher.setTogglerPosition = (position) => {
+      position  = position == 'fixed'? 'fixed' : 'absolute';
+      localStorage.setItem('bin-theme-toggler-position',position);
+    }
+
+    _themeSwitcher.getTopPositionOfToggler = () =>{
+       return localStorage.getItem('bin-theme-toggler-top');
+    }
+
+    _themeSwitcher.setTopPositionOfToggler = (topPosition) => {
+      localStorage.setItem('bin-theme-toggler-top', `${topPosition}px`);
+    }
+
+    _themeSwitcher.getLeftPositionOfToggler = () =>{
+      return localStorage.getItem('bin-theme-toggler-left');
+   }
+
+   _themeSwitcher.setLeftPositionOfToggler = (leftPosition) => {
+    localStorage.setItem('bin-theme-toggler-left', `${leftPosition}px`);
+  }
+
+  _themeSwitcher.setTheme = (KEY) => {
+    localStorage.setItem("bin-theme-toggler-mode", KEY);
+  };
+
+
 
     _themeSwitcher.createContextMenu = () => {
       let div = document.createElement("div");
       div.setAttribute("id", "bin-theme-context-menu");
       let input = document.createElement("input");
       input.type = "checkbox";
-      if(localStorage.getItem('bin-theme-toggler-position') == 'fixed') input.checked = true;
+      if(_themeSwitcher.getTogglerPosition() == 'fixed') input.checked = true;
       input.addEventListener("change", function () {
         _themeSwitcher.hideContextMenu();
         let isChecked = input.checked;
         if (isChecked) {
           document.getElementById(options.id).style.position = "fixed";
-          localStorage.setItem('bin-theme-toggler-position','fixed');
+          _themeSwitcher.setTogglerPosition('fixed');
         } else {
           document.getElementById(options.id).style.position = "absolute";
-          localStorage.setItem('bin-theme-toggler-position','absolute');
-
+          _themeSwitcher.setTogglerPosition('absolute');
         }
 
        
@@ -126,23 +158,23 @@
     };
 
     _themeSwitcher.showContextMenu = () => {
-      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      let contextMenu =  _themeSwitcher.getContextMenu();
       if (contextMenu) {
         contextMenu.style.display = "block";
-        contextMenu.style.top = localStorage.getItem("bin-theme-toggler-top") || `${20}%`;
-        contextMenu.style.left = localStorage.getItem("bin-theme-toggler-left") || `${90}%`;
-        contextMenu.style.position =  localStorage.getItem("bin-theme-toggler-position") || 'absolute';
+        contextMenu.style.top = _themeSwitcher.getTopPositionOfToggler() || `${20}%`;
+        contextMenu.style.left = _themeSwitcher.getLeftPositionOfToggler() || `${90}%`;
+        contextMenu.style.position =  _themeSwitcher.getTogglerPosition();
       }
     };
 
     _themeSwitcher.isContextMenuVisible = () => {
-       let contextMenu = document.querySelector("#bin-theme-context-menu");
+       let contextMenu = _themeSwitcher.getContextMenu();
        if(contextMenu) return contextMenu.style.display == "block";
        return false;
     }
 
     _themeSwitcher.hideContextMenu = () => {
-      let contextMenu = document.querySelector("#bin-theme-context-menu");
+      let contextMenu = _themeSwitcher.getContextMenu();
       if (contextMenu) contextMenu.style.display = "none";
     };
 
@@ -152,11 +184,9 @@
       div.setAttribute("id", _themeSwitcher.options.id);
       if (_themeSwitcher.options.glow) div.classList.add("glow");
 
-      div.style.top = localStorage.getItem("bin-theme-toggler-top") || 20 + "%";
-      div.style.left =
-        localStorage.getItem("bin-theme-toggler-left") || 90 + "%";
-      div.style.position =
-        localStorage.getItem("bin-theme-toggler-position") || "absolute";
+      div.style.top =  _themeSwitcher.getTopPositionOfToggler() || 20 + "%";
+      div.style.left = _themeSwitcher.getLeftPositionOfToggler() || 90 + "%";
+      div.style.position = _themeSwitcher.getTogglerPosition() || "absolute";
       div.style.zIndex = "5050";
 
       if (_themeSwitcher.getCurrentDisplayMode() === DARK_THEME) {
@@ -170,7 +200,7 @@
     _themeSwitcher.createMoon = (div) => {
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg"
+        MOON_SVG
       );
       div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
     };
@@ -178,14 +208,12 @@
     _themeSwitcher.createSun = (div) => {
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg"
-      );
+        SUN_SVG
+        );
       div.appendChild(_themeSwitcher.TOGGLER_IMAGE);
     };
 
-    _themeSwitcher.setTheme = (KEY) => {
-      localStorage.setItem("bin-theme-toggler-mode", KEY);
-    };
+
 
     _themeSwitcher.activateLightTheme = () => {
       let root = document.getElementsByTagName("html")[0];
@@ -198,7 +226,7 @@
       _themeSwitcher.setTheme(LIGHT_THEME);
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/moon.svg"
+        MOON_SVG
       );
     };
 
@@ -215,7 +243,7 @@
       _themeSwitcher.setTheme(DARK_THEME);
       _themeSwitcher.TOGGLER_IMAGE.setAttribute(
         "src",
-        "https://raw.githubusercontent.com/anjalbinayak/dark-theme-switcher/master/assets/svgs/sun.svg"
+        SUN_SVG
       );
     };
 
