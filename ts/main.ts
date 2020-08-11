@@ -59,7 +59,7 @@ class ThemeSwitcher {
   draggable() {
     dragElement(document.getElementById(this.options.id));
 
-    function dragElement(elmnt) {
+    function dragElement(elmnt: HTMLElement) {
       var pos1 = 0,
         pos2 = 0,
         pos3 = 0,
@@ -119,7 +119,7 @@ class ThemeSwitcher {
   }
 
   getTopPositionOfToggler() {
-     return localStorage.getItem('bin-theme-toggler-top');
+    return localStorage.getItem('bin-theme-toggler-top');
   }
 
   setTopPositionOfToggler(topPosition: number) {
@@ -139,13 +139,13 @@ class ThemeSwitcher {
   }
 
   createContextMenu() {
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.setAttribute('id', 'bin-theme-context-menu');
 
-    let input = document.createElement('input');
+    const input = document.createElement('input');
     input.type = 'checkbox';
 
-    if(this.getTogglerPosition() == 'fixed') input.checked = true;
+    if (this.getTogglerPosition() == 'fixed') input.checked = true;
 
     input.addEventListener('change', () => {
       this.hideContextMenu();
@@ -158,8 +158,8 @@ class ThemeSwitcher {
         document.getElementById(this.options.id).style.position = 'absolute';
         this.setTogglerPosition('absolute');
       }
-
     });
+
     div.innerHTML +=' <small> Fixed Position </small>';
     div.appendChild(input);
    
@@ -167,7 +167,8 @@ class ThemeSwitcher {
   }
 
   showContextMenu() {
-    let contextMenu = this.getContextMenu();
+    const contextMenu = this.getContextMenu();
+
     if (contextMenu) {
       contextMenu.style.display = 'block';
       contextMenu.style.top = this.getTopPositionOfToggler() || `${20}%`;
@@ -177,9 +178,10 @@ class ThemeSwitcher {
   }
 
   isContextMenuVisible() {
-     let contextMenu = this.getContextMenu();
-     if(contextMenu) return contextMenu.style.display == 'block';
-     return false;
+    const contextMenu = this.getContextMenu();
+
+    return contextMenu ?
+      contextMenu.style.display == 'block' : false;
   }
 
   hideContextMenu() {
