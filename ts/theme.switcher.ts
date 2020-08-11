@@ -3,8 +3,11 @@ import Style from './style';
 import SwitcherOptions from './switcher.options';
 
 export default class ThemeSwitcher {
-
-  constructor(public toggler: HTMLElement, public callbackFunction?: (isDark: boolean) => void, private options: SwitcherOptions = {}) {
+  constructor(
+    public toggler: HTMLElement,
+    public callbackFunction?: (isDark: boolean) => void,
+    private options: SwitcherOptions = {}
+    ) {
     this.applyStyle(options);
   }
 
