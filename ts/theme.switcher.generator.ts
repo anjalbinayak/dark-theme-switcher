@@ -13,6 +13,9 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
     super(toggler);
   }
 
+  /**
+   * Enable the toggler element to be draggable
+   */
   private makeDraggable(): void {
     let
       pos1 = 0,
@@ -50,7 +53,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
         document.addEventListener('mouseup', closeDragElement);
         // call a function whenever the cursor moves
         document.addEventListener('mousemove', elementDrag);
-      }
+      };
 
     this.toggler.addEventListener('mousedown', dragMouseDown);
   }

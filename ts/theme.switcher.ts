@@ -3,6 +3,7 @@ import Style from './style';
 import SwitcherOptions from './switcher.options';
 
 export default class ThemeSwitcher {
+
   /**
    * @param toggler {HTMLElement} Element that enables the user to
    * change the current theme by clicking on it
@@ -98,4 +99,5 @@ export default class ThemeSwitcher {
     else
       this.activateLightTheme();
   }
+  
 }
