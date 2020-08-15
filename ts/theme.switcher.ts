@@ -89,6 +89,9 @@ export default class ThemeSwitcher {
       this.activateDarkTheme();
   }
 
+  /**
+   * Check which theme is saved in localStorage and apply it
+   */
   private applyTheme(): void {
     if (this.getCurrentDisplayMode() === Theme.Dark)
       this.activateDarkTheme();

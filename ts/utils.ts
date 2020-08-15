@@ -19,7 +19,7 @@ interface NewElementOptions {
  * @param options {NewElementOptions} Options for the new element, such as id, classes and event listeners
  * @returns New HTMLElement
  */
-export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElementOptions) => {
+export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElementOptions): HTMLElement => {
   const element = document.createElement(tag);
   const { id, classes, listeners } = options;
   
@@ -28,4 +28,4 @@ export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElem
   if (listeners) listeners.forEach(listener => element.addEventListener(...listener));
 
   return element;
-}
+};
