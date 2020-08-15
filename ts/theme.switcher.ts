@@ -4,7 +4,6 @@ import SwitcherOptions from './switcher.options';
 
 export default class ThemeSwitcher {
   /**
-   * 
    * @param toggler {HTMLElement} Element that enables the user to
    * change the current theme by clicking on it
    * @param [callbackFunction] {(isDark: boolean) => void} Optional callback
