@@ -15,7 +15,7 @@ export default class ThemeSwitcher {
   constructor(
     public toggler: HTMLElement,
     public callbackFunction?: (isDark: boolean) => void,
-    private options: SwitcherOptions = {}
+    options: SwitcherOptions = {}
     ) {
     this.applyStyle(options);
   }

@@ -3,10 +3,13 @@ import Theme from './theme';
 import Icon from './icon';
 import { createElement } from './utils';
 import { fullStyle } from './styles';
+import { GeneratorInitOptions, GeneratorOptions } from './generator.options';
 
 export default class ThemeSwitcherGenerator extends ThemeSwitcher {
 
-  constructor() {
+  private options: GeneratorOptions;
+
+  constructor(options: GeneratorInitOptions = { glow: false }) {
     // Create toggler
     const toggler = createElement('img', {
       classes: ['bin-image-toggler'],
@@ -16,6 +19,12 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
     });
     // Use the generated image element as toggler
     super(toggler);
+    // Save options
+    this.options = {
+      id: 'bin-theme-toggler',
+      class: 'bin-theme-toggler',
+      ...options
+    };
   }
 
   init(): void {
@@ -29,7 +38,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
     });
 
     window.addEventListener('contextmenu', e => {
-      if (document.getElementById(options.id).contains(e.target as Node)) {
+      if (document.getElementById(this.options.id).contains(e.target as Node)) {
         this.showContextMenu();
         e.preventDefault();
       }
@@ -79,10 +88,10 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
       this.hideContextMenu();
       
       if (input.checked) {
-        document.getElementById(options.id).style.position = 'fixed';
+        document.getElementById(this.options.id).style.position = 'fixed';
         this.setTogglerPosition('fixed');
       } else {
-        document.getElementById(options.id).style.position = 'absolute';
+        document.getElementById(this.options.id).style.position = 'absolute';
         this.setTogglerPosition('absolute');
       }
     });
@@ -124,7 +133,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
 
     if (this.options.glow) div.classList.add('glow');
 
-    div.style.top =  this.getTopPositionOfToggler() || 20 + '%';
+    div.style.top = this.getTopPositionOfToggler() || 20 + '%';
     div.style.left = this.getLeftPositionOfToggler() || 90 + '%';
     div.style.position = this.getTogglerPosition() || 'absolute';
     div.style.zIndex = '5050';

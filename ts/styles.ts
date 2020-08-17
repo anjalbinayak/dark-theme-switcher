@@ -39,24 +39,24 @@ export const fullStyle = (transition: number) => `
     border-radius: 5px;
     cursor: move;
     background-color: #d6dedd;
-    border-radius: 50px;
+    border-radius: 50%;
     text-align: center;
     box-shadow: 2px 2px 3px #999;
-    z-index:5050!important;
+    z-index: 5050 !important;
   }
 
   #bin-theme-context-menu{
-    background:#dedede;
-    color:black;
-    height:130px;
-    width:130px;
-    position:absolute;
-    top:30%;
-    left:40%;
-    z-index:100000;
-    display:block;
-    border-radius:5px;
-    padding:5px;
+    background: #dedede;
+    color: black;
+    height: 130px;
+    width: 130px;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    z-index: 100000;
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
     box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
     display: none;
   }
