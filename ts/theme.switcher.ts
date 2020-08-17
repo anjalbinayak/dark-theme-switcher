@@ -1,6 +1,6 @@
-import Theme from './theme';
-import Style from './style';
 import SwitcherOptions from './switcher.options';
+import Theme from './theme';
+import { basicStyle } from './styles';
 
 export default class ThemeSwitcher {
 
@@ -30,6 +30,15 @@ export default class ThemeSwitcher {
   }
 
   /**
+   * Return styles needed for switching theme
+   * @param transition {number} Transition time (in milliseconds) for every time
+   * the current theme changes. Default is `150`
+   */
+  getStyle(transition: number = 150): string {
+    return basicStyle(transition);
+  }
+
+  /**
    * Append the necessary styles to the DOM
    * @param options {SwitcherOptions} Style options
    */
@@ -37,7 +46,7 @@ export default class ThemeSwitcher {
     const { transition } = options;
 
     const sheet = document.createElement('style');
-    sheet.innerHTML = Style(transition);
+    sheet.innerHTML = this.getStyle(transition);
     document.querySelector('html').appendChild(sheet);
   }
 
@@ -93,7 +102,7 @@ export default class ThemeSwitcher {
   /**
    * Check which theme is saved in localStorage and apply it
    */
-  private applyTheme(): void {
+  protected applyTheme(): void {
     if (this.getCurrentDisplayMode() === Theme.Dark)
       this.activateDarkTheme();
     else
