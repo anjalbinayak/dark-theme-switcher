@@ -5,7 +5,6 @@ import { Global, createElement } from './utils';
 
 @Global
 export default class ThemeSwitcher {
-
   #transition: number;
 
   /**
@@ -19,8 +18,8 @@ export default class ThemeSwitcher {
   constructor(
     public toggler: HTMLElement,
     public callbackFunction?: (isDark: boolean) => void,
-    options: SwitcherOptions = {}
-    ) {
+    options: SwitcherOptions = {},
+  ) {
     this.#transition = options.transition;
   }
 
@@ -50,7 +49,7 @@ export default class ThemeSwitcher {
   protected applyStyle(): void {
     createElement('style', {
       content: this.getStyle(),
-      childOf: document.querySelector('html')
+      childOf: document.querySelector('html'),
     });
   }
 
@@ -59,7 +58,7 @@ export default class ThemeSwitcher {
    */
   getCurrentDisplayMode(): string {
     return localStorage.getItem('bin-theme-toggler-mode');
-  };
+  }
 
   /**
    * Set a theme at the local storage
@@ -70,11 +69,11 @@ export default class ThemeSwitcher {
   }
 
   activateLightTheme(): void {
-    let root = document.querySelector('html'),
-        images = document.querySelectorAll('img');
+    const root = document.querySelector('html');
+    const images = document.querySelectorAll('img');
 
     root.classList.remove('bin-dark-theme');
-    images.forEach(img => img.classList.remove('bin-dark-theme-image'));
+    images.forEach((img) => img.classList.remove('bin-dark-theme-image'));
 
     this.setTheme(Theme.Light);
 
@@ -82,13 +81,12 @@ export default class ThemeSwitcher {
   }
 
   activateDarkTheme(): void {
-    let root = document.querySelector('html'),
-        images = document.querySelectorAll('img');
+    const root = document.querySelector('html');
+    const images = document.querySelectorAll('img');
 
     root.classList.add('bin-dark-theme');
-    images.forEach(img => {
-      if (!img.classList.contains('bin-image-toggler'))
-        img.classList.add('bin-dark-theme-image');
+    images.forEach((img) => {
+      if (!img.classList.contains('bin-image-toggler')) img.classList.add('bin-dark-theme-image');
     });
 
     this.setTheme(Theme.Dark);
@@ -97,19 +95,15 @@ export default class ThemeSwitcher {
   }
 
   toggleTheme(): void {
-    if (this.getCurrentDisplayMode() === Theme.Dark)
-      this.activateLightTheme();
-    else
-      this.activateDarkTheme();
+    if (this.getCurrentDisplayMode() === Theme.Dark) this.activateLightTheme();
+    else this.activateDarkTheme();
   }
 
   /**
    * Check which theme is saved in localStorage and apply it
    */
   protected applyTheme(): void {
-    if (this.getCurrentDisplayMode() === Theme.Dark)
-      this.activateDarkTheme();
-    else
-      this.activateLightTheme();
+    if (this.getCurrentDisplayMode() === Theme.Dark) this.activateDarkTheme();
+    else this.activateLightTheme();
   }
 }

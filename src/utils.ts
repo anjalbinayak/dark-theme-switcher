@@ -15,7 +15,7 @@ interface NewElementOptions {
   content?: string;
   /**
    * It is possible to add listeners to the same event type multiple times
-  */
+   */
   listeners?: [keyof HTMLElementEventMap, EventListenerOrEventListenerObject][];
   /**
    * Parent to which the new element must be appended to
@@ -32,12 +32,12 @@ interface NewElementOptions {
 export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElementOptions): HTMLElement => {
   const element = document.createElement(tag);
   const { id, classes, content, listeners } = options;
-  
+
   if (id) element.id = id;
   if (classes) element.classList.add(...classes);
   if (content) element.innerHTML = content;
-  if (listeners) listeners.forEach(listener => element.addEventListener(...listener));
-  
+  if (listeners) listeners.forEach((listener) => element.addEventListener(...listener));
+
   options.childOf?.appendChild(element);
 
   return element;
@@ -48,10 +48,10 @@ export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElem
  * @param set {object} Object with properties that will be added to `globalThis`
  */
 export const makeGlobal = (set: object): void =>
-  Object.entries(set).forEach(entry => globalThis[entry[0]] = entry[1]);
+  Object.entries(set).forEach((entry) => (globalThis[entry[0]] = entry[1]));
 
 /**
  * Decorator function that add the given class to `globalThis`
  * @param type {Type} Class that will be added to `globalThis`
  */
-export const Global = <T extends Type>(type: T): T => globalThis[type.name] = type;
+export const Global = <T extends Type>(type: T): T => (globalThis[type.name] = type);
