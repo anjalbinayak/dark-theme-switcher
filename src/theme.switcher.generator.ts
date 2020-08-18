@@ -38,13 +38,13 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
       window.addEventListener('click', (e) => {
         if (!this.getContextMenu().contains(e.target as Node)) this.hideContextMenu();
       });
-  
+
       window.addEventListener('contextmenu', (e) => {
         if (document.getElementById(this.options.id).contains(e.target as Node)) {
           this.showContextMenu();
           e.preventDefault();
         }
-  
+
         if (this.isContextMenuVisible()) e.preventDefault();
       });
     }
