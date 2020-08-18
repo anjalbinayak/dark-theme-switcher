@@ -25,7 +25,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
       class: 'bin-theme-toggler',
       ...options,
     };
-    // Use default icons when thery are not provided in options
+    // Use default icons when they are not provided in options
     if (!this.options.sunIconUrl) this.options.sunIconUrl = Icon.Sun;
     if (!this.options.moonIconUrl) this.options.moonIconUrl = Icon.Moon;
   }

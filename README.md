@@ -89,7 +89,7 @@ It automatically creates a draggable button to switch the theme.
 
 Its constructor has an unique parameter:
 
-- `options: GeneratorInitOptions`
+- `options?: GeneratorInitOptions`
   - Object with options to customize the button
 
 **Basic usage**
