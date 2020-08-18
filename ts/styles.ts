@@ -1,3 +1,5 @@
+import { GeneratorInitOptions } from './generator.options';
+
 export const basicStyle = (transition: number) => `
   html {
     transition: ${transition}ms;
@@ -12,15 +14,15 @@ export const basicStyle = (transition: number) => `
   }
 `;
 
-export const fullStyle = (transition: number) => `
+export const fullStyle = (options: GeneratorInitOptions) => `
   .bin-image-toggler {
-    height: 30px;
-    width: 30px;
+    width: ${options.size ?? 30}px;
+    height: auto;
     cursor: pointer;
   }
 
   html {
-    transition: ${transition}ms;
+    transition: ${options.transition ?? 150}ms;
   }
 
   .bin-dark-theme {
@@ -36,12 +38,11 @@ export const fullStyle = (transition: number) => `
     top: 10;
     right: 20;
     padding: 5px;
-    border-radius: 5px;
     cursor: move;
-    background-color: #d6dedd;
+    background-color: ${options.backgroundColor || '#d6dedd'};
     border-radius: 50%;
     text-align: center;
-    box-shadow: 2px 2px 3px #999;
+    box-shadow: ${options.boxShadow || '2px 2px 6px -2px rgba(0, 0, 0, .5)'};
     z-index: 5050 !important;
   }
 
@@ -68,10 +69,10 @@ export const fullStyle = (transition: number) => `
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px -10px #aef4af;
+      box-shadow: 0 0 10px -10px ${options.glowColor || '#aef4af'};
     }
     to {
-      box-shadow: 0 0 10px 10px #aef4af;
+      box-shadow: 0 0 10px 10px ${options.glowColor || '#aef4af'};
     }
   }
 `;

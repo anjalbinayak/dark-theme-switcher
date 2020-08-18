@@ -1,10 +1,12 @@
 import SwitcherOptions from './switcher.options';
 import Theme from './theme';
 import { basicStyle } from './styles';
-import { Global } from './utils';
+import { Global, createElement } from './utils';
 
 @Global
 export default class ThemeSwitcher {
+
+  #transition: number;
 
   /**
    * @param toggler {HTMLElement} Element that enables the user to
@@ -19,7 +21,7 @@ export default class ThemeSwitcher {
     public callbackFunction?: (isDark: boolean) => void,
     options: SwitcherOptions = {}
     ) {
-    this.applyStyle(options);
+    this.#transition = options.transition;
   }
 
   /**
@@ -28,6 +30,7 @@ export default class ThemeSwitcher {
    */
   init(): void {
     this.toggler.addEventListener('click', () => this.toggleTheme());
+    this.applyStyle();
     this.applyTheme();
   }
 
@@ -36,20 +39,19 @@ export default class ThemeSwitcher {
    * @param transition {number} Transition time (in milliseconds) for every time
    * the current theme changes. Default is `150`
    */
-  getStyle(transition: number = 150): string {
-    return basicStyle(transition);
+  getStyle(): string {
+    return basicStyle(this.#transition);
   }
 
   /**
    * Append the necessary styles to the DOM
    * @param options {SwitcherOptions} Style options
    */
-  private applyStyle(options: SwitcherOptions): void {
-    const { transition } = options;
-
-    const sheet = document.createElement('style');
-    sheet.innerHTML = this.getStyle(transition);
-    document.querySelector('html').appendChild(sheet);
+  protected applyStyle(): void {
+    createElement('style', {
+      content: this.getStyle(),
+      childOf: document.querySelector('html')
+    });
   }
 
   /**

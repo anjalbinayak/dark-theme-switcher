@@ -99,6 +99,13 @@ new ThemeSwitcherGenerator().init();
 
 ```js
 new ThemeSwitcherGenerator({
-  glow: true
+  transition: 100,
+  glow: true, 
+  glowColor: '#fa4d5f',
+  backgroundColor: '#fafafa',
+  boxShadow: 'none',
+  sunIconUrl: 'https://link.to.icon/sun.png',
+  moonIconUrl: 'https://link.to.icon/moon.png',
+  size: 40,
 }).init();
 ```

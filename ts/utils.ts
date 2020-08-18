@@ -10,9 +10,17 @@ interface NewElementOptions {
    */
   classes?: string[];
   /**
+   * Content that will be appended to the element using its `innerHTML` property
+   */
+  content?: string;
+  /**
    * It is possible to add listeners to the same event type multiple times
   */
   listeners?: [keyof HTMLElementEventMap, EventListenerOrEventListenerObject][];
+  /**
+   * Parent to which the new element must be appended to
+   */
+  childOf?: Element;
 }
 
 /**
@@ -23,11 +31,14 @@ interface NewElementOptions {
  */
 export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElementOptions): HTMLElement => {
   const element = document.createElement(tag);
-  const { id, classes, listeners } = options;
+  const { id, classes, content, listeners } = options;
   
   if (id) element.id = id;
   if (classes) element.classList.add(...classes);
+  if (content) element.innerHTML = content;
   if (listeners) listeners.forEach(listener => element.addEventListener(...listener));
+  
+  options.childOf?.appendChild(element);
 
   return element;
 };

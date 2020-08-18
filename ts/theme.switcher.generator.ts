@@ -19,18 +19,24 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
       ]
     });
     // Set toggler and callback function
-    super(toggler, isDark => this.toggler.setAttribute('src', isDark ? Icon.Sun : Icon.Moon));
+    super(toggler, isDark => this.toggler.setAttribute('src', isDark ?
+      options.sunIconUrl || Icon.Sun : options.moonIconUrl || Icon.Moon
+    ));
     // Save options
     this.options = {
       id: 'bin-theme-toggler',
       class: 'bin-theme-toggler',
       ...options
     };
+    // Use default icons when thery are not provided in options
+    if (!this.options.sunIconUrl) this.options.sunIconUrl = Icon.Sun;
+    if (!this.options.moonIconUrl) this.options.moonIconUrl = Icon.Moon;
   }
 
   init(): void {
     this.createContextMenu();
     this.createToggler();
+    this.applyStyle();
     this.applyTheme();
     this.makeDraggable();
 
@@ -139,13 +145,15 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
     div.style.position = this.getTogglerPosition() || 'absolute';
     div.style.zIndex = '5050';
 
-    const icon = this.getCurrentDisplayMode() === Theme.Dark ? Icon.Sun : Icon.Moon;
+    const icon = this.getCurrentDisplayMode() === Theme.Dark ?
+      this.options.sunIconUrl : this.options.moonIconUrl;
+
     this.createIcon(icon, div);
     
     document.body.appendChild(div);
   }
 
-  private createIcon(icon: Icon, div: HTMLElement): void {
+  private createIcon(icon: string, div: HTMLElement): void {
     this.toggler.setAttribute('src', icon);
     div.appendChild(this.toggler);
   }
@@ -196,7 +204,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
     element.onmousedown = dragMouseDown;
   }
 
-  getStyle(transition: number = 150): string {
-    return fullStyle(transition);
+  getStyle(): string {
+    return fullStyle(this.options);
   }
 }
