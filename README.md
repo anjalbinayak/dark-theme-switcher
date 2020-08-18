@@ -50,7 +50,7 @@ If you want to enable any element to be the toggler, use `ThemeSwitcher`.
 Its `constructor` has three parameters:
 
 - `toggler: HTMLElement`
-  - The element that will toggle the theme when clicking on it
+  - Element that alternates the theme every time the user clicks on it
 - `callbackFunction?: (isDark: boolean) => void`
   - Optional function that runs every time the theme is changed. The parameter `isDark` is a `boolean` that indicates if the current theme is dark
 - `options?: SwitcherOptions`
@@ -78,4 +78,27 @@ const themeSwitcher = new ThemeSwitcher(toggler, isDark => {
 }, options);
     
 themeSwitcher.init();
+```
+
+### `ThemeSwitcherGenerator`
+
+It automatically creates a draggable button to switch the theme.
+
+Its constructor has an unique parameter:
+
+- `options: GeneratorInitOptions`
+  - Object with options to customize the button
+
+**Basic usage**
+
+```js
+new ThemeSwitcherGenerator().init();
+```
+
+**Advanced usage**
+
+```js
+new ThemeSwitcherGenerator({
+  glow: true
+}).init();
 ```
