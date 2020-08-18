@@ -1,5 +1,10 @@
 import { GeneratorInitOptions } from './generator.options';
 
+/**
+ * Return the basic style needed to make the switcher works fine
+ * @param transition {number} Time in milliseconds for the transition between changing themes
+ * @returns {string} The basic style needed to make the switcher works fine
+ */
 export const basicStyle = (transition: number) => `
   html {
     transition: ${transition}ms;
@@ -14,6 +19,11 @@ export const basicStyle = (transition: number) => `
   }
 `;
 
+/**
+ * Return all the style needed to make the switcher works fine
+ * @param options {GeneratorInitOptions} Object with options for the styles
+ * @returns {string} All the style needed to make the toggler button works fine
+ */
 export const fullStyle = (options: GeneratorInitOptions) => `
   .bin-image-toggler {
     width: ${options.size ?? 30}px;

@@ -5,7 +5,7 @@ import { Global, createElement } from './utils';
 
 @Global
 export default class ThemeSwitcher {
-  #transition: number;
+  private transition: number;
 
   /**
    * @param toggler {HTMLElement} Element that enables the user to
@@ -20,7 +20,7 @@ export default class ThemeSwitcher {
     public callbackFunction?: (isDark: boolean) => void,
     options: SwitcherOptions = {},
   ) {
-    this.#transition = options.transition;
+    this.transition = options.transition;
   }
 
   /**
@@ -39,7 +39,7 @@ export default class ThemeSwitcher {
    * the current theme changes. Default is `150`
    */
   getStyle(): string {
-    return basicStyle(this.#transition);
+    return basicStyle(this.transition);
   }
 
   /**
@@ -68,6 +68,9 @@ export default class ThemeSwitcher {
     localStorage.setItem('bin-theme-toggler-mode', key);
   }
 
+  /**
+   * Activate light theme
+   */
   activateLightTheme(): void {
     const root = document.querySelector('html');
     const images = document.querySelectorAll('img');
@@ -80,6 +83,9 @@ export default class ThemeSwitcher {
     if (this.callbackFunction) this.callbackFunction(false);
   }
 
+  /**
+   * Activate dark theme
+   */
   activateDarkTheme(): void {
     const root = document.querySelector('html');
     const images = document.querySelectorAll('img');
@@ -94,6 +100,9 @@ export default class ThemeSwitcher {
     if (this.callbackFunction) this.callbackFunction(true);
   }
 
+  /**
+   * Toggle current theme
+   */
   toggleTheme(): void {
     if (this.getCurrentDisplayMode() === Theme.Dark) this.activateLightTheme();
     else this.activateDarkTheme();
