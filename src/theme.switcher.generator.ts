@@ -178,7 +178,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
       this.setTopPositionOfToggler(element.style.top);
       this.setLeftPositionOfToggler(element.style.left);
     };
-    
+
     const closeDragElement = (): void => {
       // stop moving when mouse button is released:
       document.onmouseup = null;
