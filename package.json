@@ -1,6 +1,6 @@
 {
   "name": "dark-theme-switcher",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Package that allows you to easily switch the theme of your application between light and dark themes",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
