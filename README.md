@@ -21,7 +21,7 @@ You decide! ;)
 Add the following script before `body`'s closing tag :
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/luizfilipezs/dark-theme-switcher@latest/js/dark-theme-switcher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/luizfilipezs/dark-theme-switcher@latest/js/dark-theme-switcher.js"></script>
 ```
 
 ### 2. npm
