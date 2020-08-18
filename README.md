@@ -1,35 +1,46 @@
-# Dark Theme Switcher
+# dark-theme-switcher
 
-Forked from [anjalbinayak/dark-theme-switcher](https://github.com/anjalbinayak/dark-theme-switcher)
+## Installation
 
-## Changes made
+You can use the script directly in browser or install it via npm. Choose one of the following options:
 
-- [x] Remove sample files
-- [x] Initialize npm
-- [x] Start using TypeScript
-- [x] Update code according to ES2020
-- [x] Remove default floating icon
-- [x] Enable any element to be the toggler
-- [x] Handle styles from JavaScript (with options)
+### 1. HTML
 
-## Development
+Add the following script before `body`'s closing tag :
 
-1. `npm i`
-2. `npm run build`
+```html
+<script src="https://cdn.jsdelivr.net/npm/dark-theme-switcher@latest/js/dark-theme-switcher.min.js"></script>
+```
+
+### 2. npm
+
+Inside your project, run:
+
+`npm i dark-theme-switcher`
+
+**Import**
+
+CommonJS
+
+```js
+const { ThemeSwitcher, ThemeSwitcherGenerator } = require('dark-theme-switcher');
+```
+
+ES6
+
+```js
+import { ThemeSwitcher, ThemeSwitcherGenerator } from 'dark-theme-switcher';
+```
 
 ## Usage
 
-### Import
+### `ThemeSwitcher`
 
-```ts
-import { ThemeSwitcher } from 'dark-theme-switcher';
-```
-
-### Initialization
+If you want to use any element as toggler, use `ThemeSwitcher`.
 
 **Simple**
 
-```ts
+```js
 // Target element
 const toggler = document.getElementById('button');
 // Switcher
@@ -38,7 +49,7 @@ new ThemeSwitcher(toggler).init();
 
 **Advanced**
 
-```ts
+```js
 const toggler = document.getElementById('toggler');
 const options = { transition: 200 }; // default is 150
     
