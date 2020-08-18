@@ -9,7 +9,7 @@ import { GeneratorInitOptions, GeneratorOptions } from './generator.options';
 export default class ThemeSwitcherGenerator extends ThemeSwitcher {
   private options: GeneratorOptions;
 
-  constructor(options: GeneratorInitOptions = { glow: false }) {
+  constructor(options: GeneratorInitOptions = {}) {
     // Create toggler
     const toggler = createElement('img', {
       classes: ['bin-image-toggler'],
@@ -31,24 +31,28 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
   }
 
   init(): void {
-    this.createContextMenu();
+    // Create custom context menu
+    if (!this.options.useDefaultContextMenu) {
+      this.createContextMenu();
+
+      window.addEventListener('click', (e) => {
+        if (!this.getContextMenu().contains(e.target as Node)) this.hideContextMenu();
+      });
+  
+      window.addEventListener('contextmenu', (e) => {
+        if (document.getElementById(this.options.id).contains(e.target as Node)) {
+          this.showContextMenu();
+          e.preventDefault();
+        }
+  
+        if (this.isContextMenuVisible()) e.preventDefault();
+      });
+    }
+    // Create the toggler, make it draggable, set styles and apply theme
     this.createToggler();
+    this.makeDraggable();
     this.applyStyle();
     this.applyTheme();
-    this.makeDraggable();
-
-    window.addEventListener('click', (e) => {
-      if (!this.getContextMenu().contains(e.target as Node)) this.hideContextMenu();
-    });
-
-    window.addEventListener('contextmenu', (e) => {
-      if (document.getElementById(this.options.id).contains(e.target as Node)) {
-        this.showContextMenu();
-        e.preventDefault();
-      }
-
-      if (this.isContextMenuVisible()) e.preventDefault();
-    });
   }
 
   private getContextMenu(): HTMLElement {

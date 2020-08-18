@@ -110,5 +110,15 @@ new ThemeSwitcherGenerator({
   sunIconUrl: 'https://link.to.icon/sun.png',
   moonIconUrl: 'https://link.to.icon/moon.png',
   size: 40,
+  contextMenuOptions: {
+    width: '100px',
+    height: '30px',
+    padding: '15px',
+    textColor: '#121212',
+    background: '#ccc',
+    boxShadow: '0px 5px 10px 0px rgba(77,77,77,0.16)',
+    borderRadius: '15px'
+  },
+  //useDefaultContextMenu: true // Disable context menu provided by dark-theme-switcher
 }).init();
 ```

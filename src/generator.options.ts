@@ -2,7 +2,7 @@ export interface GeneratorInitOptions {
   /**
    * If `true`, enables a glow animation on the button
    */
-  glow: boolean;
+  glow?: true;
   /**
    * Color used in glow animation when it is enabled
    */
@@ -33,6 +33,46 @@ export interface GeneratorInitOptions {
    * Duration in milliseconds for transition between themes
    */
   transition?: number;
+  /**
+   * If `true`, disables the context menu provided by dark-theme-switcher
+   */
+  useDefaultContextMenu?: true;
+  /**
+   * Options for customizing the context menu provided by dark-theme-switcher.
+   * Discarded when `useDefaultContextMenu` value is `true`
+   */
+  contextMenuOptions?: ContextMenuOptions;
+}
+
+interface ContextMenuOptions {
+  /**
+   * CSS `width` property
+   */
+  width?: string;
+  /**
+   * CSS `height` property
+   */
+  height?: string;
+  /**
+   * CSS `padding` property
+   */
+  padding?: string;
+  /**
+   * CSS `color` property
+   */
+  textColor?: string;
+  /**
+   * CSS `background` property
+   */
+  background?: string;
+  /**
+   * CSS `box-shadow` property
+   */
+  boxShadow?: string;
+  /**
+   * CSS `border-radius` property
+   */
+  borderRadius?: string;
 }
 
 export interface GeneratorOptions extends GeneratorInitOptions {

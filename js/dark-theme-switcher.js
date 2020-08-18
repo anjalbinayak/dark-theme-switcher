@@ -1,13 +1,6 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
   "use strict";
   Object.defineProperty(exports, "__esModule", { value: true });
-  const dark_theme_switcher_1 = require("dark-theme-switcher");
-  dark_theme_switcher_1.ThemeSwitcher;
-  dark_theme_switcher_1.ThemeSwitcherGenerator;
-  
-  },{"dark-theme-switcher":3}],2:[function(require,module,exports){
-  "use strict";
-  Object.defineProperty(exports, "__esModule", { value: true });
   var Icon;
   (function (Icon) {
       Icon["Moon"] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFVklEQVR4Xu1Zf4gVVRg9351V11pR09yYuXdWl6fEYpoFSQkWhboWFf1j/xQoYQUJWmSoFUFmYT8QEoPMiAIhkSCoFKOEtSgS14JoLUrYN3ferBtpJeiu7pv7xZTPnX3uW9d9b2dfuzP/vbn3ft85557v3jv3Ecb4Q2OcP1IBUgeMcQXSEhjjBkgXwbQE0hIY4wqkJTDGDZDuAmkJpCWQjALkOM4dQuAeAL9pnXsHQJhM6oGzDHcJkFL2fQBvBsQNBSjM/ILvBy+OagFmzZpRn8+Pi2b63kuJ8gGtg+ZRK0BDg70gnzefCmHZ/ZEc1Q5wHGc+wC1C0ORSM2wMbsvlct+OOgc4jiMBHBEC9QORO38+X9fZ2XlmtAlgKWUfBGhxEbH3AKzqXQDptO/7Jd2RtCgV2wWklKuJeGdfAmabMWKLEPij9705pXXHtKSJlspXEQFmzpxZ29PT0x63PjN97vv+8kwmM+7cua7uGIBQ69yEUXUOkNJ+hIh2xUieDUO+PggCHb2T0ukkwoxC+4W2X6rBBRVxgFJ2S9/ap9e19tcXCErpfEGEuwq/ifCY5+WKymVk5ChbANd1pzKHJ4H4l6XIaK2PFygp5TwHYHPsJHjQ94OLgowM9f+yli2AlHI5Ee+LLXI/at0xL07Kda9rYrZ+ir8Tgm/KZoPvR5J8RQRwXWcdM7b12pt3eV6wupiYUs7XABbF3rdonbsTgBlJEcp2gOvKrcz8TIzEs1rnXi4mJaW8m4g/i78nog2e52/9XwuglNwO8JpeB9Baz/Pf7IdU9GW4H6BlsTZmpod93989UiKU7QCl5GsAPx0ToOSs2rbtEvEPQoipcRGIaJPn+a+ORDmULYCU9noiisAXnre0zj1RakaVspcCFC2aVrwPM30lRPik53W0JumGsgVQyr4foI9ju8BhrTsWDkTCdZ0VzIhsX3NpPz4EYA9RTUtdXd2vbW1t56PdynXdKcaY+US8hMjcCliHPM+PttaybpbKFuDCxceJGBEjRI3MZrMdA4tgLwlD3lNUDv0NOWOMsYQQtcWNlThQlS1ABEpK5ygRFsQAPq917qXLWdm2bWVZ9DaA5ZfrW6L9Fa1zm4Y49t9hFRFAKecpAG/EgJwksmZ7nvfnIMCRUmopYDYCuH0Q/S92EYIXZbPBN1cy5hIXlTO4MLaxsXFyPn9OM2NSLN77WudWXkl8x3HmWBY9AISLmTEPEE6pSQpDPhIEwS0A+EpyDIsAUVClnMiKW/om4DVaBzvKACgymWvqurom7hQCD/aNI5q11gfKiF25EogiZTKZCd3d3UeJuCkGKjrorPV9f/sQgdZI6ewgwqPx8czY6/u5FUOM2WdYRdaAQkSl1FzAfAfgqngWIt6dz2NdEASxm6GB4UspZxNxdJ0W/36AMWgnopt93z9VdQJEgKSUzUT8SfEebwz/LQRtt6zw3fb2E+0lwFNDg31jGNLjzLxKCBpX1O8kUbjY8060VYJ8FKOiDog5YRlgPgJwdX9AjcExy0IrM6Iboy4iqjMmbCQS0QFKlSDnCWGas9mOY5UiP2wCRIEv3AHsATC3AoD3jx+fX3n8eOfvFYg1fGtAMbimpqbxp0//tY6ZNwohpgwBvAfwBq2DD8vd7krlHpYSKE42ffr0SbW1tSuJwocAEe3dAz15gL9kFh/U19fvbW1t7RmCcIMekogAcTSO40wjooVC8BxmXAuYicaIs0IgZwx+zufzh5P81yhxAQY9NQl1TAVISOiqTZM6oGqnJiFgqQMSErpq06QOqNqpSQhY6oCEhK7aNKkDqnZqEgKWOiAhoas2zZh3wD8mT8pQGdeXaQAAAABJRU5ErkJggg==";
@@ -15,16 +8,15 @@
   })(Icon || (Icon = {}));
   exports.default = Icon;
   
-  },{}],3:[function(require,module,exports){
+  },{}],2:[function(require,module,exports){
   "use strict";
   Object.defineProperty(exports, "__esModule", { value: true });
-  exports.ThemeSwitcherGenerator = exports.ThemeSwitcher = void 0;
   const theme_switcher_1 = require("./theme.switcher");
-  exports.ThemeSwitcher = theme_switcher_1.default;
   const theme_switcher_generator_1 = require("./theme.switcher.generator");
-  exports.ThemeSwitcherGenerator = theme_switcher_generator_1.default;
+  theme_switcher_1.default;
+  theme_switcher_generator_1.default;
   
-  },{"./theme.switcher":7,"./theme.switcher.generator":6}],4:[function(require,module,exports){
+  },{"./theme.switcher":6,"./theme.switcher.generator":5}],3:[function(require,module,exports){
   "use strict";
   Object.defineProperty(exports, "__esModule", { value: true });
   exports.fullStyle = exports.basicStyle = void 0;
@@ -52,7 +44,7 @@
    * @returns {string} All the style needed to make the toggler button works fine
    */
   exports.fullStyle = (options) => {
-      var _a, _b;
+      var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
       return `
     .bin-image-toggler {
       width: ${(_a = options.size) !== null && _a !== void 0 ? _a : 30}px;
@@ -78,27 +70,41 @@
       right: 20;
       padding: 5px;
       cursor: move;
-      background-color: ${options.backgroundColor || '#d6dedd'};
+      background-color: ${options.backgroundColor || '#f0f0f0'};
       border-radius: 50%;
       text-align: center;
       box-shadow: ${options.boxShadow || '2px 2px 6px -2px rgba(0, 0, 0, .5)'};
       z-index: 5050 !important;
     }
   
-    #bin-theme-context-menu{
-      background: #dedede;
-      color: black;
-      height: 130px;
-      width: 130px;
+    #bin-theme-context-menu {
+      background: ${((_c = options.contextMenuOptions) === null || _c === void 0 ? void 0 : _c.background) || '#e3e3e3'};
+      color: ${((_d = options.contextMenuOptions) === null || _d === void 0 ? void 0 : _d.textColor) || 'black'};
+      height: ${((_e = options.contextMenuOptions) === null || _e === void 0 ? void 0 : _e.height) || 'auto'};
+      width: ${((_f = options.contextMenuOptions) === null || _f === void 0 ? void 0 : _f.width) || 'auto'};
       position: absolute;
       top: 30%;
       left: 40%;
       z-index: 100000;
       display: block;
-      border-radius: 5px;
-      padding: 5px;
-      box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+      border-radius: ${((_g = options.contextMenuOptions) === null || _g === void 0 ? void 0 : _g.borderRadius) || '5px'};
+      padding: ${((_h = options.contextMenuOptions) === null || _h === void 0 ? void 0 : _h.padding) || '5px'};
+      -webkit-box-shadow: ${((_j = options.contextMenuOptions) === null || _j === void 0 ? void 0 : _j.boxShadow) || '1px 2px 3px rgba(0,0,0,0.5)'};
+      -moz-box-shadow: ${((_k = options.contextMenuOptions) === null || _k === void 0 ? void 0 : _k.boxShadow) || '1px 2px 3px rgba(0,0,0,0.5)'};
+      box-shadow: ${((_l = options.contextMenuOptions) === null || _l === void 0 ? void 0 : _l.boxShadow) || '1px 2px 3px rgba(0,0,0,0.5)'};
       display: none;
+    }
+  
+    #bin-theme-context-menu small {
+      margin-right: 7px;
+    }
+  
+    #bin-theme-context-menu input[type=checkbox] {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background-color: #fff;
+      border-color: #d0d0d0;
     }
   
     .glow {
@@ -117,7 +123,7 @@
   `;
   };
   
-  },{}],5:[function(require,module,exports){
+  },{}],4:[function(require,module,exports){
   "use strict";
   Object.defineProperty(exports, "__esModule", { value: true });
   /**
@@ -130,7 +136,7 @@
   })(Theme || (Theme = {}));
   exports.default = Theme;
   
-  },{}],6:[function(require,module,exports){
+  },{}],5:[function(require,module,exports){
   "use strict";
   var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
       var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -145,7 +151,7 @@
   const utils_1 = require("./utils");
   const styles_1 = require("./styles");
   let ThemeSwitcherGenerator = class ThemeSwitcherGenerator extends theme_switcher_1.default {
-      constructor(options = { glow: false }) {
+      constructor(options = {}) {
           // Create toggler
           const toggler = utils_1.createElement('img', {
               classes: ['bin-image-toggler'],
@@ -159,30 +165,34 @@
               class: 'bin-theme-toggler',
               ...options,
           };
-          // Use default icons when thery are not provided in options
+          // Use default icons when they are not provided in options
           if (!this.options.sunIconUrl)
               this.options.sunIconUrl = icon_1.default.Sun;
           if (!this.options.moonIconUrl)
               this.options.moonIconUrl = icon_1.default.Moon;
       }
       init() {
-          this.createContextMenu();
+          // Create custom context menu
+          if (!this.options.useDefaultContextMenu) {
+              this.createContextMenu();
+              window.addEventListener('click', (e) => {
+                  if (!this.getContextMenu().contains(e.target))
+                      this.hideContextMenu();
+              });
+              window.addEventListener('contextmenu', (e) => {
+                  if (document.getElementById(this.options.id).contains(e.target)) {
+                      this.showContextMenu();
+                      e.preventDefault();
+                  }
+                  if (this.isContextMenuVisible())
+                      e.preventDefault();
+              });
+          }
+          // Create the toggler, make it draggable, set styles and apply theme
           this.createToggler();
+          this.makeDraggable();
           this.applyStyle();
           this.applyTheme();
-          this.makeDraggable();
-          window.addEventListener('click', (e) => {
-              if (!this.getContextMenu().contains(e.target))
-                  this.hideContextMenu();
-          });
-          window.addEventListener('contextmenu', (e) => {
-              if (document.getElementById(this.options.id).contains(e.target)) {
-                  this.showContextMenu();
-                  e.preventDefault();
-              }
-              if (this.isContextMenuVisible())
-                  e.preventDefault();
-          });
       }
       getContextMenu() {
           return document.querySelector('#bin-theme-context-menu');
@@ -310,7 +320,7 @@
   ], ThemeSwitcherGenerator);
   exports.default = ThemeSwitcherGenerator;
   
-  },{"./icon":2,"./styles":4,"./theme":5,"./theme.switcher":7,"./utils":8}],7:[function(require,module,exports){
+  },{"./icon":1,"./styles":3,"./theme":4,"./theme.switcher":6,"./utils":7}],6:[function(require,module,exports){
   "use strict";
   var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
       var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -427,7 +437,7 @@
   ], ThemeSwitcher);
   exports.default = ThemeSwitcher;
   
-  },{"./styles":4,"./theme":5,"./utils":8}],8:[function(require,module,exports){
+  },{"./styles":3,"./theme":4,"./utils":7}],7:[function(require,module,exports){
   "use strict";
   Object.defineProperty(exports, "__esModule", { value: true });
   exports.Global = exports.makeGlobal = exports.createElement = void 0;
@@ -463,5 +473,5 @@
    */
   exports.Global = (type) => (globalThis[type.name] = type);
   
-  },{}]},{},[1]);
+  },{}]},{},[2]);
   

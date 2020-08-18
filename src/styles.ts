@@ -49,27 +49,41 @@ export const fullStyle = (options: GeneratorInitOptions) => `
     right: 20;
     padding: 5px;
     cursor: move;
-    background-color: ${options.backgroundColor || '#d6dedd'};
+    background-color: ${options.backgroundColor || '#f0f0f0'};
     border-radius: 50%;
     text-align: center;
     box-shadow: ${options.boxShadow || '2px 2px 6px -2px rgba(0, 0, 0, .5)'};
     z-index: 5050 !important;
   }
 
-  #bin-theme-context-menu{
-    background: #dedede;
-    color: black;
-    height: 130px;
-    width: 130px;
+  #bin-theme-context-menu {
+    background: ${options.contextMenuOptions?.background || '#e3e3e3'};
+    color: ${options.contextMenuOptions?.textColor || 'black'};
+    height: ${options.contextMenuOptions?.height || 'auto'};
+    width: ${options.contextMenuOptions?.width || 'auto'};
     position: absolute;
     top: 30%;
     left: 40%;
     z-index: 100000;
     display: block;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+    border-radius: ${options.contextMenuOptions?.borderRadius || '5px'};
+    padding: ${options.contextMenuOptions?.padding || '5px'};
+    -webkit-box-shadow: ${options.contextMenuOptions?.boxShadow || '1px 2px 3px rgba(0,0,0,0.5)'};
+    -moz-box-shadow: ${options.contextMenuOptions?.boxShadow || '1px 2px 3px rgba(0,0,0,0.5)'};
+    box-shadow: ${options.contextMenuOptions?.boxShadow || '1px 2px 3px rgba(0,0,0,0.5)'};
     display: none;
+  }
+
+  #bin-theme-context-menu small {
+    margin-right: 7px;
+  }
+
+  #bin-theme-context-menu input[type=checkbox] {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #fff;
+    border-color: #d0d0d0;
   }
 
   .glow {
