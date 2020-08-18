@@ -1,8 +1,17 @@
 # dark-theme-switcher
 
+## The idea
+
+This package allows you to easily add a theme switcher in your application. Depending on your needs, this can be done with just one line of code!
+
 ## Installation
 
-You can use the script directly in browser or install it via npm. Choose one of the following options:
+There are two ways to install this package:
+
+1. using it directly in the browser or
+2. installing it via npm
+
+You decide! ;)
 
 ### 1. HTML
 
@@ -36,9 +45,18 @@ import { ThemeSwitcher, ThemeSwitcherGenerator } from 'dark-theme-switcher';
 
 ### `ThemeSwitcher`
 
-If you want to use any element as toggler, use `ThemeSwitcher`.
+If you want to enable any element to be the toggler, use `ThemeSwitcher`.
 
-**Simple**
+Its `constructor` has three parameters:
+
+- `toggler: HTMLElement`
+  - The element that will toggle the theme when clicking on it
+- `callbackFunction?: (isDark: boolean) => void`
+  - Optional function that runs every time the theme is changed. The parameter `isDark` is a `boolean` that indicates if the current theme is dark
+- `options?: SwitcherOptions`
+  - Optional object with parameters for styling the animation
+
+**Simple usage**
 
 ```js
 // Target element
@@ -47,7 +65,7 @@ const toggler = document.getElementById('button');
 new ThemeSwitcher(toggler).init();
 ```
 
-**Advanced**
+**Advanced usage**
 
 ```js
 const toggler = document.getElementById('toggler');
