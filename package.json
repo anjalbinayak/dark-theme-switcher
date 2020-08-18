@@ -39,9 +39,6 @@
     "url": "https://github.com/luizfilipezs/dark-theme-switcher/issues"
   },
   "homepage": "https://github.com/luizfilipezs/dark-theme-switcher#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^26.0.1",
