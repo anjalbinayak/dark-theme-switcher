@@ -1,6 +1,6 @@
 {
   "name": "dark-theme-switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Package that allows you to easily switch the theme of your application between light and dark themes",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -28,10 +28,12 @@
     "email": "filipeluiz.bs@gmail.com",
     "url": "https://blogdolipe.com.br"
   },
-  "contributors": [{
-    "name": "Anjal Binayak",
-    "url": "https://binayak.codes"
-  }],
+  "contributors": [
+    {
+      "name": "Anjal Binayak",
+      "url": "https://binayak.codes"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luizfilipezs/dark-theme-switcher/issues"

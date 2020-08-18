@@ -197,7 +197,7 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
 
     element.onmousedown = dragMouseDown;
   }
-  
+
   getStyle(): string {
     return fullStyle(this.options);
   }
