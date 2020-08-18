@@ -1,10 +1,11 @@
 import ThemeSwitcher from './theme.switcher';
 import Theme from './theme';
 import Icon from './icon';
-import { createElement } from './utils';
+import { createElement, Global } from './utils';
 import { fullStyle } from './styles';
 import { GeneratorInitOptions, GeneratorOptions } from './generator.options';
 
+@Global
 export default class ThemeSwitcherGenerator extends ThemeSwitcher {
 
   private options: GeneratorOptions;
@@ -17,8 +18,8 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
         ['click', e => this.toggleTheme()]
       ]
     });
-    // Use the generated image element as toggler
-    super(toggler);
+    // Set toggler and callback function
+    super(toggler, isDark => this.toggler.setAttribute('src', isDark ? Icon.Sun : Icon.Moon));
     // Save options
     this.options = {
       id: 'bin-theme-toggler',
@@ -63,16 +64,16 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
      return localStorage.getItem('bin-theme-toggler-top');
   }
 
-  private setTopPositionOfToggler(topPosition: number): void {
-    localStorage.setItem('bin-theme-toggler-top', `${topPosition}px`);
+  private setTopPositionOfToggler(topPosition: string): void {
+    localStorage.setItem('bin-theme-toggler-top', topPosition);
   }
 
   private getLeftPositionOfToggler(): string {
     return localStorage.getItem('bin-theme-toggler-left');
   }
 
-  private setLeftPositionOfToggler(leftPosition: number): void {
-    localStorage.setItem('bin-theme-toggler-left', `${leftPosition}px`);
+  private setLeftPositionOfToggler(leftPosition: string): void {
+    localStorage.setItem('bin-theme-toggler-left', leftPosition);
   }
 
   private createContextMenu(): void {
@@ -153,49 +154,49 @@ export default class ThemeSwitcherGenerator extends ThemeSwitcher {
    * Enable the toggler element to be draggable
    */
   private makeDraggable(): void {
+    const element = document.getElementById(this.options.id);
     let
       pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
-    
+
     const
-      elementDrag = (e: MouseEvent) => {
+      elementDrag = (e: MouseEvent): void => {
         e.preventDefault();
-        // calculate the new cursor position
+        // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        // set the element's new position
-        this.toggler.style.top = this.toggler.offsetTop - pos2 + 'px';
-        this.toggler.style.left = this.toggler.offsetLeft - pos1 + 'px';
-        // save position in localStorage
-        localStorage.setItem('bin-theme-toggler-top', this.toggler.style.top);
-        localStorage.setItem('bin-theme-toggler-left', this.toggler.style.left);
-      },
+        // set the element's new position:
+        element.style.top = element.offsetTop - pos2 + 'px';
+        element.style.left = element.offsetLeft - pos1 + 'px';
 
-      closeDragElement = () => {
-        // stop moving when mouse button is released
+        this.setTopPositionOfToggler(element.style.top);
+        this.setLeftPositionOfToggler(element.style.left);
+      },
+      
+      closeDragElement = (): void => {
+        // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
       },
 
-      dragMouseDown = (e: MouseEvent) => {
+      dragMouseDown = (e: MouseEvent): void => {
         e.preventDefault();
-        // get the mouse cursor position at startup
+        // get the mouse cursor position at startup:
         pos3 = e.clientX;
         pos4 = e.clientY;
-        document.addEventListener('mouseup', closeDragElement);
-        // call a function whenever the cursor moves
-        document.addEventListener('mousemove', elementDrag);
-      };
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
 
-    this.toggler.addEventListener('mousedown', dragMouseDown);
+    element.onmousedown = dragMouseDown;
   }
 
   getStyle(transition: number = 150): string {
     return fullStyle(transition);
   }
-
 }

@@ -16,7 +16,7 @@ export const fullStyle = (transition: number) => `
   .bin-image-toggler {
     height: 30px;
     width: 30px;
-    cursor: default;
+    cursor: pointer;
   }
 
   html {

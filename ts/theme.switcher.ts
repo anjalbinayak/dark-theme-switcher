@@ -1,7 +1,9 @@
 import SwitcherOptions from './switcher.options';
 import Theme from './theme';
 import { basicStyle } from './styles';
+import { Global } from './utils';
 
+@Global
 export default class ThemeSwitcher {
 
   /**
@@ -108,5 +110,4 @@ export default class ThemeSwitcher {
     else
       this.activateLightTheme();
   }
-  
 }

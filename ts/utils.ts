@@ -1,3 +1,5 @@
+import Type from './type';
+
 interface NewElementOptions {
   /**
    * ID of the element
@@ -28,4 +30,20 @@ export const createElement = (tag: keyof HTMLElementTagNameMap, options: NewElem
   if (listeners) listeners.forEach(listener => element.addEventListener(...listener));
 
   return element;
+};
+
+/**
+ * Receive an object and add its properties to `globalThis`
+ * @param set {object} Object with properties that will be added to `globalThis`
+ */
+export const makeGlobal = (set: object): void =>
+  Object.entries(set).forEach(entry => globalThis[entry[0]] = entry[1]);
+
+/**
+ * Decorator function that add the given class to `globalThis`
+ * @param type {Type} Class that will be added to `globalThis`
+ */
+export const Global = <T extends Type>(type: T): T => {
+  globalThis[type.name] = type;
+  return type;
 };

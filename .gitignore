@@ -1,5 +1,6 @@
 node_modules/
-js/
+js/*
+!js/dark-theme-switcher.min.js
 ts/sample.ts
 ts/icon.ts
 index.html
