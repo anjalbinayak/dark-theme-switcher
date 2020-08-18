@@ -1,5 +1,8 @@
 # dark-theme-switcher
 
+[![npm](https://img.shields.io/npm/v/dark-theme-switcher.svg)](https://www.npmjs.com/package/dark-theme-switcher)
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
+
 ## The idea
 
 This package allows you to easily add a theme switcher in your application. Depending on your needs, this can be done with just one line of code!
