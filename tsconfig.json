@@ -3,10 +3,10 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "commonjs",
-    "outDir": "js",
-    "allowJs": true,
+    "declaration": true,
+    "outDir": "./lib",
     "experimentalDecorators": true
   },
-  "include": ["ts"],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
