@@ -23,7 +23,15 @@
     "dark-theme",
     "theme-switcher"
   ],
-  "author": "luizfilipezs",
+  "author": {
+    "name": "Luiz Filipe da Silva",
+    "email": "filipeluiz.bs@gmail.com",
+    "url": "https://blogdolipe.com.br"
+  },
+  "contributors": [{
+    "name": "Anjal Binayak",
+    "url": "https://binayak.codes"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luizfilipezs/dark-theme-switcher/issues"
