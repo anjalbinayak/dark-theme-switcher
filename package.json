@@ -1,0 +1,54 @@
+{
+  "name": "dark-theme-switcher",
+  "version": "1.0.4",
+  "description": "Package that allows you to easily switch the theme of your application between light and dark themes",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json --passWithNoTests",
+    "build": "tsc",
+    "format": "prettier --write \"src/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizfilipezs/dark-theme-switcher.git"
+  },
+  "keywords": [
+    "dark-theme",
+    "theme-switcher"
+  ],
+  "author": {
+    "name": "Luiz Filipe da Silva",
+    "email": "filipeluiz.bs@gmail.com",
+    "url": "https://blogdolipe.com.br"
+  },
+  "contributors": [
+    {
+      "name": "Anjal Binayak",
+      "url": "https://binayak.codes"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizfilipezs/dark-theme-switcher/issues"
+  },
+  "homepage": "https://github.com/luizfilipezs/dark-theme-switcher#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.5.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.9.7"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
