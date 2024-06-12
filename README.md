@@ -71,7 +71,7 @@ new ThemeSwitcher(toggler).init();
 **Advanced usage**
 
 ```js
-const toggler = document.getElementById('toggler');
+const toggler = document.querySelector('#toggler');
 const options = { transition: 200 }; // default is 150
     
 const themeSwitcher = new ThemeSwitcher(toggler, isDark => {
